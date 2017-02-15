@@ -1,2 +1,3 @@
 # NetStepper
-A networked stepper motor controller.
+
+**A networked stepper motor controller.**
