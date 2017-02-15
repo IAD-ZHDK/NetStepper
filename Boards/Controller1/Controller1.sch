@@ -8569,34 +8569,6 @@ Added bigger pads to the TO-92 package</description>
 <busses>
 </busses>
 <nets>
-<net name="BLE_SCK" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="D9(SCK)"/>
-<wire x1="50.8" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
-<label x="58.42" y="53.34" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="BLE_MISO" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="D10(MISO)"/>
-<wire x1="50.8" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
-<label x="58.42" y="55.88" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="BLE_MOSI" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="D8(INT,MOSI)"/>
-<wire x1="50.8" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
-<label x="58.42" y="50.8" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="BLE_CS" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="D7(INT)"/>
-<wire x1="50.8" y1="48.26" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
-<label x="58.42" y="48.26" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
 <pinref part="MCU1" gate="G$1" pin="GND"/>
@@ -8658,13 +8630,6 @@ Added bigger pads to the TO-92 package</description>
 <pinref part="DS1" gate="J$1" pin="3"/>
 <wire x1="106.68" y1="76.2" x2="129.54" y2="76.2" width="0.1524" layer="91"/>
 <label x="114.3" y="76.2" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="BLE_IRQ" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="D6(INT)"/>
-<wire x1="50.8" y1="45.72" x2="71.12" y2="45.72" width="0.1524" layer="91"/>
-<label x="58.42" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="12V" class="0">
