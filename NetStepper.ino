@@ -11,5 +11,5 @@ void loop() {
 }
 
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  manager.messageReceived(topic, payload, bytes, length);
+  manager.handle(topic, payload);
 }

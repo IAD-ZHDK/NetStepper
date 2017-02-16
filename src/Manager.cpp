@@ -38,8 +38,7 @@ void Manager::loop() {
   stepper.loop();
 }
 
-void Manager::messageReceived(String topic, String payload, char *bytes,
-                              unsigned int length) {
+void Manager::handle(String topic, String payload) {
   if (topic.equals("/direction")) {
     stepper.changeDirection((int)payload.toInt());
   } else if (topic.equals("/speed")) {

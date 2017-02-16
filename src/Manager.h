@@ -24,7 +24,7 @@ class Manager {
 public:
   void setup();
   void loop();
-  void messageReceived(String, String, char *, unsigned int);
+  void handle(String, String);
 };
 
 #endif // NETSTEPPER_MANAGER_H
