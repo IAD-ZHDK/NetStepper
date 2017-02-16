@@ -157,6 +157,7 @@ void Stepper::loop() {
         position += move;
       } else {
         position = target;
+        mode = Idle;
       }
     }
 

@@ -12,14 +12,14 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
-enum DriveMode { Idle, Absolute, Continuous };
+enum DriveMode { Unset, Idle, Absolute, Continuous };
 
 enum Direction { CW, CCW };
 
 class Stepper {
 private:
   boolean powered = false;
-  DriveMode mode = Idle;
+  DriveMode mode = Unset;
   int resolution = 1;
   Direction direction = CW;
   int speed = 5000;
