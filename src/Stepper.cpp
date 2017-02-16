@@ -35,6 +35,11 @@ void Stepper::writeDirection(Direction dir) {
   digitalWrite(STEPPER_DIR, (uint8_t)(direction == CW ? LOW : HIGH));
 }
 
+void Stepper::writeStep(boolean on) {
+  stepping = on;
+  digitalWrite(STEPPER_STEP, (uint8_t)(on ? HIGH : LOW));
+}
+
 void Stepper::setup(MQTTClient *_client) {
   // save client reference
   client = _client;
@@ -51,9 +56,7 @@ void Stepper::setup(MQTTClient *_client) {
   writePower(false);
   writeResolution(1);
   writeDirection(CW);
-
-  // set default
-  digitalWrite(STEPPER_STEP, LOW);
+  writeStep(false);
 
   // subscribe to topics
   client->subscribe("/power");
@@ -103,8 +106,7 @@ void Stepper::loop() {
 
     // complete step if stepping
     if (stepping) {
-      digitalWrite(STEPPER_STEP, LOW);
-      stepping = false;
+      writeStep(false);
       return;
     }
 
@@ -159,8 +161,7 @@ void Stepper::loop() {
     }
 
     // begin step
-    digitalWrite(STEPPER_STEP, HIGH);
-    stepping = true;
+    writeStep(true);
 
     // read sensor
     int sensor = analogRead(STEPPER_POS);

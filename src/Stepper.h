@@ -35,8 +35,9 @@ private:
 
   void writePower(boolean on);
   void writeResolution(int resolution);
-  void writeResolutionBits(uint8_t, uint8_t, uint8_t);
+  void writeResolutionBits(uint8_t ms1, uint8_t ms2, uint8_t ms3);
   void writeDirection(Direction direction);
+  void writeStep(boolean on);
 
 public:
   void setup(MQTTClient *);
