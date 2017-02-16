@@ -16,7 +16,7 @@ void Stepper::setup(MQTTClient *_client) {
   setEnabled(false);
   setDriveMode(Idle);
   setResolution(1);
-  setDirection(Left);
+  setDirection(CW);
   setSpeed(5000);
 
   // set default
@@ -49,10 +49,10 @@ void Stepper::handle(String topic, String payload) {
   } else if (topic.equals("/resolution")) {
     setResolution((int)payload.toInt());
   } else if (topic.equals("/direction")) {
-    if (payload.equals("left")) {
-      setDirection(Left);
-    } else if (payload.equals("right")) {
-      setDirection(Right);
+    if (payload.equals("cw")) {
+      setDirection(CW);
+    } else if (payload.equals("ccw")) {
+      setDirection(CCW);
     }
   } else if (topic.equals("/speed")) {
     setSpeed((int)payload.toInt());
@@ -101,7 +101,7 @@ void Stepper::setResolution(int res) {
 void Stepper::setDirection(Direction dir) {
   direction = dir;
 
-  digitalWrite(STEPPER_DIR, (uint8_t)(direction == Left ? LOW : HIGH));
+  digitalWrite(STEPPER_DIR, (uint8_t)(direction == CW ? LOW : HIGH));
 }
 
 void Stepper::setSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
@@ -155,7 +155,7 @@ void Stepper::loop() {
       // check if we are still away from the target
       if(position < target - move || position > target + move) {
         // update direction
-        setDirection(position > target ? Left : Right);
+        setDirection(position < target ? CW : CCW);
 
         // update position
         if(position > target) {

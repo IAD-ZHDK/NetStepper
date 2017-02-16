@@ -14,16 +14,14 @@
 
 enum DriveMode { Idle, Single, Absolute, Continuous };
 
-enum Direction { Left, Right };
-
-// TODO: Name direction as CW and CCW.
+enum Direction { CW, CCW };
 
 class Stepper {
 private:
   boolean enabled = false;
   DriveMode mode = Idle;
   int resolution = 1;
-  Direction direction = Left;
+  Direction direction = CW;
   int speed = 5000;
   int threshold = 0;
   double target = 0.0;
