@@ -11,6 +11,7 @@ void Manager::connect() {
   }
 
   client.subscribe("/direction");
+  client.subscribe("/mode");
   client.subscribe("/speed");
   client.subscribe("/resolution");
   client.subscribe("/enabled");
@@ -40,14 +41,24 @@ void Manager::loop() {
 
 void Manager::handle(String topic, String payload) {
   if (topic.equals("/direction")) {
-    stepper.changeDirection((int)payload.toInt());
+    if(payload.equals("left")) {
+      stepper.setDirection(LEFT);
+    } else if(payload.equals("right")) {
+      stepper.setDirection(RIGHT);
+    }
+  } else if(topic.equals("/mode")) {
+    if(payload.equals("idle")) {
+      stepper.setDriveMode(IDLE);
+    } else if(payload.equals("continuous")) {
+      stepper.setDriveMode(CONTINUOUS);
+    }
   } else if (topic.equals("/speed")) {
-    stepper.changeSpeed((int)payload.toInt());
+    stepper.setSpeed((int) payload.toInt());
   } else if (topic.equals("/resolution")) {
-    stepper.changeResolution((int)payload.toInt());
+    stepper.setResolution((int) payload.toInt());
   } else if (topic.equals("/enabled")) {
-    stepper.enable(payload.toInt() == 1);
+    stepper.setEnabled(payload.toInt() == 1);
   } else if (topic.equals("/search")) {
-    stepper.enableSearch(payload.toInt() == 1);
+    stepper.setSearch(payload.toInt() == 1);
   }
 }

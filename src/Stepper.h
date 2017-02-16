@@ -12,56 +12,76 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
+enum DriveMode { IDLE, CONTINUOUS };
+
+enum Direction { LEFT, RIGHT };
+
 class Stepper {
 private:
-  unsigned long lastStep = 0;
-  boolean stepping = false;
   boolean enabled = false;
-  int direction = 0;
+  DriveMode mode = IDLE;
+  Direction direction = LEFT;
   int speed = 5000;
   boolean search = false;
+
+  unsigned long lastStep = 0;
+  boolean stepping = false;
   int lastReading = 0;
   MQTTClient *client;
-  void setResolution(uint8_t, uint8_t, uint8_t);
+
+  void _setResolution(uint8_t, uint8_t, uint8_t);
 
 public:
+  /**
+   * Setup the stepper motor.
+   */
   void setup(MQTTClient*);
 
   /**
-   * Enable the stepper motor.
+   * Enable or disable the stepper motor.
    *
    * @param yes
    */
-  void enable(boolean yes);
+  void setEnabled(boolean yes);
+
+  /**
+   * Change the stepper drive mode.
+   *
+   * @param mode
+   */
+  void setDriveMode(DriveMode mode);
 
   /**
    * Change the resolution of the stepper.
    *
-   * @param res Should be between 1, 2, 4, 8 or 16.
+   * @param resolution Should be between 1, 2, 4, 8 or 16.
    */
-  void changeResolution(int res);
+  void setResolution(int resolution);
 
   /**
-   * Change direction of the stepper.
+   * Change the direction of the stepper.
    *
-   * @param dir Should be -1, 0 or 1.
+   * @param direction Should be -1, 0 or 1.
    */
-  void changeDirection(int dir);
+  void setDirection(Direction direction);
 
   /**
    * Change the speed of the stepper. Lower is faster.
    *
    * @param speed Should be between 10 and 10000.
    */
-  void changeSpeed(int speed);
+  void setSpeed(int speed);
 
   /**
-   * Enable the zero point search.
+   * Enable or disable the zero point search.
    *
    * @param yes
    */
-  void enableSearch(boolean yes);
+  void setSearch(boolean yes);
 
+  /**
+   * Do one loop.
+   */
   void loop();
 };
 
