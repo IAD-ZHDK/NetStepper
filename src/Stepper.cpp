@@ -14,17 +14,19 @@ void Stepper::setup(MQTTClient *_client) {
 
   // enforce defaults
   setPower(false);
-  setDriveMode(Idle);
   setResolution(1);
   setDirection(CW);
   setSpeed(5000);
+
+  // enforce idle mode
+  mode = Idle;
 
   // set default
   digitalWrite(STEPPER_STEP, LOW);
 
   // subscribe to topics
   client->subscribe("/power");
-  client->subscribe("/mode");
+  client->subscribe("/stop");
   client->subscribe("/resolution");
   client->subscribe("/direction");
   client->subscribe("/speed");
@@ -39,14 +41,8 @@ void Stepper::handle(String topic, String payload) {
     } else if(payload.equals("off")) {
       setPower(false);
     }
-  } else if (topic.equals("/mode")) {
-    if (payload.equals("idle")) {
-      setDriveMode(Idle);
-    } else if(payload.equals("absolute")) {
-      setDriveMode(Absolute);
-    } else if (payload.equals("continuous")) {
-      setDriveMode(Continuous);
-    }
+  } else if (topic.equals("/stop")) {
+    mode = Idle;
   } else if (topic.equals("/resolution")) {
     setResolution((int)payload.toInt());
   } else if (topic.equals("/direction")) {
@@ -69,8 +65,6 @@ void Stepper::setPower(boolean on) {
 
   digitalWrite(STEPPER_EN, (uint8_t)(powered ? LOW : HIGH));
 }
-
-void Stepper::setDriveMode(DriveMode _mode) { mode = _mode; }
 
 void Stepper::_setResolution(uint8_t ms1, uint8_t ms2, uint8_t ms3) {
   digitalWrite(STEPPER_MS1, ms1);
@@ -99,6 +93,7 @@ void Stepper::setResolution(int res) {
 
 void Stepper::setDirection(Direction dir) {
   direction = dir;
+  mode = Continuous;
 
   digitalWrite(STEPPER_DIR, (uint8_t)(direction == CW ? LOW : HIGH));
 }
@@ -109,6 +104,7 @@ void Stepper::setSearch(int _threshold) { threshold = _threshold; }
 
 void Stepper::setTarget(double _target) {
   target = _target;
+  mode = Absolute;
 }
 
 void Stepper::loop() {
@@ -124,69 +120,85 @@ void Stepper::loop() {
       return;
     }
 
+    // publish status if changed
+    if(mode != lastStatus) {
+      lastStatus = mode;
+
+      if (mode == Idle) {
+        client->publish("/status", "idle");
+      } else if (mode == Continuous) {
+        client->publish("/status", "continuous");
+      } else if (mode == Absolute) {
+        client->publish("/status", "absolute");
+      }
+    }
+
     // return immediately if not powered or in Idle mode
     if (!powered || mode == Idle) {
       return;
     }
 
-    // make one step if stepper is in continuous mode
-    if (mode == Continuous) {
-      // begin step
-      digitalWrite(STEPPER_STEP, HIGH);
-      stepping = true;
+    // return immediately if position has already been reached
+    if (mode == Absolute && position == target) {
+      return;
     }
 
-    // check if in absolute mode
+    // calculate next move
+    double move = 1.0 / 200.0 / resolution;
+
+    // handle continuous mode
+    if(mode == Continuous) {
+      if(direction == CW) {
+        position -= move;
+      } else if(direction == CCW) {
+        position += move;
+      }
+    }
+
+    // handle absolute mode
     if (mode == Absolute) {
-      // calculate current mode
-      double move = 1.0 / 200.0 / resolution;
+      // update direction
+      setDirection(position < target ? CW : CCW);
 
-      // check if we are still away from the target
-      if(position < target - move || position > target + move) {
-        // update direction
-        setDirection(position < target ? CW : CCW);
-
-        // update position
-        if(position > target) {
-          position -= move;
-        } else {
-          position += move;
-        }
-
-        // begin step
-        digitalWrite(STEPPER_STEP, HIGH);
-        stepping = true;
-
-        // update position
-        client->publish("/position", String(position));
+      // update position
+      if(position > target + move) {
+        position -= move;
+      } else if(position < target - move) {
+        position += move;
+      } else {
+        position = target;
       }
     }
 
-    // check if a step has been made
-    if (stepping) {
-      // read sensor
-      int sensor = analogRead(STEPPER_POS);
+    // begin step
+    digitalWrite(STEPPER_STEP, HIGH);
+    stepping = true;
 
-      // check if sensor has changed
-      if (sensor != lastReading) {
-        // save reading
-        lastReading = sensor;
+    // read sensor
+    int sensor = analogRead(STEPPER_POS);
 
-        // send current sensor value
-        client->publish("/sensor", String(sensor));
+    // check if sensor has changed
+    if (sensor != lastReading) {
+      // save reading
+      lastReading = sensor;
 
-        // check if zero has been reached
-        if (threshold > 0 && sensor > threshold) {
-          // reset position
-          position = 0;
+      // publish sensor value
+      client->publish("/sensor", String(sensor));
 
-          // set drive mode to idle
-          setDriveMode(Idle);
+      // check if zero has been reached
+      if (threshold > 0 && sensor > threshold) {
+        // reset position
+        position = 0;
 
-          // finish search
-          threshold = 0;
-        }
+        // set drive mode to idle
+        mode = Idle;
+
+        // finish search
+        threshold = 0;
       }
     }
+
+    // publish position
+    client->publish("/position", String(position));
   }
 }

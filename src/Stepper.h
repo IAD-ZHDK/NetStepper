@@ -30,6 +30,7 @@ private:
   unsigned long lastStep = 0;
   boolean stepping = false;
   int lastReading = 0;
+  DriveMode lastStatus = Idle;
   MQTTClient *client;
 
   void _setResolution(uint8_t, uint8_t, uint8_t);
@@ -54,13 +55,6 @@ public:
    * @param on
    */
   void setPower(boolean on);
-
-  /**
-   * Change the stepper drive mode.
-   *
-   * @param mode
-   */
-  void setDriveMode(DriveMode mode);
 
   /**
    * Change the resolution of the stepper.
