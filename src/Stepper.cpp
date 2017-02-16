@@ -18,12 +18,9 @@ void Stepper::setup(MQTTClient * _client) {
   digitalWrite(STEPPER_DIR, LOW);
 }
 
-void Stepper::enable(boolean ok) {
-  if (ok) {
-    digitalWrite(STEPPER_EN, LOW);
-  } else {
-    digitalWrite(STEPPER_EN, HIGH);
-  }
+void Stepper::enable(boolean yes) {
+  enabled = yes;
+  digitalWrite(STEPPER_EN, (uint8_t )(enabled ? LOW : HIGH));
 }
 
 void Stepper::setResolution(uint8_t ms1, uint8_t ms2, uint8_t ms3) {
@@ -46,30 +43,20 @@ void Stepper::changeResolution(int res) {
   }
 }
 
-// should be -1, 0 or 1
 void Stepper::changeDirection(int dir) {
-  // set on off
-  on = dir != 0;
-
-  // set direction
-  if (dir < 0) {
-    digitalWrite(STEPPER_DIR, LOW);
-  } else {
-    digitalWrite(STEPPER_DIR, HIGH);
-  }
+  direction = dir;
+  digitalWrite(STEPPER_DIR, (uint8_t)(direction < 0 ? LOW : HIGH));
 }
 
-// should be between 10 and 10000
 void Stepper::changeSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
 
-// should be 1 or 0
 void Stepper::enableSearch(boolean ok) { search = ok; }
 
 void Stepper::loop() {
-  // check run time
-  if (lastMicros + speed < micros()) {
+  // check last step
+  if (lastStep + speed < micros()) {
     // save current time
-    lastMicros = micros();
+    lastStep = micros();
 
     // complete step if stepping
     if (stepping) {
@@ -78,26 +65,32 @@ void Stepper::loop() {
       return;
     }
 
-    // check if stepper is on
-    if (on) {
+    // check if stepper is enabled and direction is not zero
+    if (enabled && direction != 0) {
       // begin step
       digitalWrite(STEPPER_STEP, HIGH);
       stepping = true;
 
       // read sensor
-      int pos = analogRead(STEPPER_POS);
+      int sensor = analogRead(STEPPER_POS);
 
       // check if sensor has changed
-      if (pos != lastPos) {
+      if (sensor != lastReading) {
+        // save reading
+        lastReading = sensor;
+
         // send current sensor value
-        client->publish("/sensor", String(pos));
+        client->publish("/sensor", String(sensor));
 
         // check if zero has been reached
-        if (search && pos > 300) {
+        if (search && sensor > 300) {
           // TODO: Make threshold configurable.
 
+          // stop stepper
+          changeDirection(0);
+
+          // finish search
           search = false;
-          on = false;
         }
       }
     }
