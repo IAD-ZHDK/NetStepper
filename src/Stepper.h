@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <MQTTClient.h>
 
 #ifndef NETSTEPPER_STEPPER_H
 #define NETSTEPPER_STEPPER_H
@@ -18,10 +19,12 @@ private:
   boolean on = false;
   int speed = 5000;
   boolean search = false;
+  int lastPos = 0;
+  MQTTClient *client;
   void setResolution(uint8_t, uint8_t, uint8_t);
 
 public:
-  void setup();
+  void setup(MQTTClient*);
   void enable(boolean);
   void changeResolution(int);
   void changeDirection(int);

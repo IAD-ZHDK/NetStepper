@@ -23,7 +23,7 @@ void Manager::setup() {
   client.begin(net);
   client.setHost(MANAGER_BROKER);
 
-  stepper.setup();
+  stepper.setup(&client);
 
   connect();
 }

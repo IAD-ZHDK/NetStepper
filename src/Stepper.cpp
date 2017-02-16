@@ -1,6 +1,8 @@
 #include "Stepper.h"
 
-void Stepper::setup() {
+void Stepper::setup(MQTTClient * _client) {
+  client = _client;
+
   pinMode(STEPPER_EN, OUTPUT);
   pinMode(STEPPER_MS1, OUTPUT);
   pinMode(STEPPER_MS2, OUTPUT);
@@ -58,7 +60,7 @@ void Stepper::changeDirection(int dir) {
 }
 
 // should be between 10 and 10000
-void Stepper::changeSpeed(int spd) { speed = constrain(spd, 10, 10000); }
+void Stepper::changeSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
 
 // should be 1 or 0
 void Stepper::enableSearch(boolean ok) { search = ok; }
@@ -76,15 +78,27 @@ void Stepper::loop() {
       return;
     }
 
-    // begin step
+    // check if stepper is on
     if (on) {
+      // begin step
       digitalWrite(STEPPER_STEP, HIGH);
       stepping = true;
 
-      // check if zero has been reached
-      if (search && analogRead(STEPPER_POS) > 300) {
-        search = false;
-        on = false;
+      // read sensor
+      int pos = analogRead(STEPPER_POS);
+
+      // check if sensor has changed
+      if (pos != lastPos) {
+        // send current sensor value
+        client->publish("/sensor", String(pos));
+
+        // check if zero has been reached
+        if (search && pos > 300) {
+          // TODO: Make threshold configurable.
+
+          search = false;
+          on = false;
+        }
       }
     }
   }
