@@ -18,7 +18,7 @@ enum Direction { CW, CCW };
 
 class Stepper {
 private:
-  boolean enabled = false;
+  boolean powered = false;
   DriveMode mode = Idle;
   int resolution = 1;
   Direction direction = CW;
@@ -52,9 +52,9 @@ public:
   /**
    * Enable or disable the stepper motor.
    *
-   * @param yes
+   * @param on
    */
-  void setEnabled(boolean yes);
+  void setPower(boolean on);
 
   /**
    * Change the stepper drive mode.

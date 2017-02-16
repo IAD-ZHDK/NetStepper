@@ -13,7 +13,7 @@ void Stepper::setup(MQTTClient *_client) {
   pinMode(STEPPER_DIR, OUTPUT);
 
   // enforce defaults
-  setEnabled(false);
+  setPower(false);
   setDriveMode(Idle);
   setResolution(1);
   setDirection(CW);
@@ -23,7 +23,7 @@ void Stepper::setup(MQTTClient *_client) {
   digitalWrite(STEPPER_STEP, LOW);
 
   // subscribe to topics
-  client->subscribe("/enabled");
+  client->subscribe("/powered");
   client->subscribe("/mode");
   client->subscribe("/resolution");
   client->subscribe("/direction");
@@ -34,8 +34,12 @@ void Stepper::setup(MQTTClient *_client) {
 }
 
 void Stepper::handle(String topic, String payload) {
-  if (topic.equals("/enabled")) {
-    setEnabled(payload.toInt() == 1);
+  if (topic.equals("/powered")) {
+    if(payload.equals("on")) {
+      setPower(true);
+    } else if(payload.equals("off")) {
+      setPower(false);
+    }
   } else if (topic.equals("/mode")) {
     if (payload.equals("idle")) {
       setDriveMode(Idle);
@@ -65,10 +69,10 @@ void Stepper::handle(String topic, String payload) {
   }
 }
 
-void Stepper::setEnabled(boolean yes) {
-  enabled = yes;
+void Stepper::setPower(boolean on) {
+  powered = on;
 
-  digitalWrite(STEPPER_EN, (uint8_t)(enabled ? LOW : HIGH));
+  digitalWrite(STEPPER_EN, (uint8_t)(powered ? LOW : HIGH));
 }
 
 void Stepper::setDriveMode(DriveMode _mode) { mode = _mode; }
@@ -127,8 +131,8 @@ void Stepper::loop() {
       return;
     }
 
-    // return immediately if not enabled or in Idle mode
-    if (!enabled || mode == Idle) {
+    // return immediately if not powered or in Idle mode
+    if (!powered || mode == Idle) {
       return;
     }
 
