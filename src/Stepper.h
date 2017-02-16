@@ -12,17 +12,22 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
-enum DriveMode { Idle, Single, Continuous };
+enum DriveMode { Idle, Single, Absolute, Continuous };
 
 enum Direction { Left, Right };
+
+// TODO: Name direction as CW and CCW.
 
 class Stepper {
 private:
   boolean enabled = false;
   DriveMode mode = Idle;
+  int resolution = 1;
   Direction direction = Left;
   int speed = 5000;
-  boolean search = false;
+  int threshold = 0;
+  double target = 0.0;
+  double position = 0.0;
 
   unsigned long lastStep = 0;
   boolean stepping = false;
@@ -37,6 +42,14 @@ public:
    * Setup the stepper motor.
    */
   void setup(MQTTClient *);
+
+  /**
+   * Handle incoming messages.
+   *
+   * @param topic
+   * @param payload
+   */
+  void handle(String topic, String payload);
 
   /**
    * Enable or disable the stepper motor.
@@ -76,9 +89,9 @@ public:
   /**
    * Enable or disable the zero point search.
    *
-   * @param yes
+   * @param threshold Should be between 0 and 1024.
    */
-  void setSearch(boolean yes);
+  void setSearch(int threshold);
 
   /**
    * Set the amount of steps to move in Single mode.
@@ -86,6 +99,13 @@ public:
    * @param steps
    */
   void setSteps(int steps);
+
+  /**
+   * Set the absolute position in revolutions from the zero point.
+   *
+   * @param target
+   */
+  void setTarget(double target);
 
   /**
    * Do one loop.

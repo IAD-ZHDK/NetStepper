@@ -21,6 +21,48 @@ void Stepper::setup(MQTTClient *_client) {
 
   // set default
   digitalWrite(STEPPER_STEP, LOW);
+
+  // subscribe to topics
+  client->subscribe("/enabled");
+  client->subscribe("/mode");
+  client->subscribe("/resolution");
+  client->subscribe("/direction");
+  client->subscribe("/speed");
+  client->subscribe("/search");
+  client->subscribe("/steps");
+  client->subscribe("/target");
+}
+
+void Stepper::handle(String topic, String payload) {
+  if (topic.equals("/enabled")) {
+    setEnabled(payload.toInt() == 1);
+  } else if (topic.equals("/mode")) {
+    if (payload.equals("idle")) {
+      setDriveMode(Idle);
+    } else if (payload.equals("single")) {
+      setDriveMode(Single);
+    } else if(payload.equals("absolute")) {
+      setDriveMode(Absolute);
+    } else if (payload.equals("continuous")) {
+      setDriveMode(Continuous);
+    }
+  } else if (topic.equals("/resolution")) {
+    setResolution((int)payload.toInt());
+  } else if (topic.equals("/direction")) {
+    if (payload.equals("left")) {
+      setDirection(Left);
+    } else if (payload.equals("right")) {
+      setDirection(Right);
+    }
+  } else if (topic.equals("/speed")) {
+    setSpeed((int)payload.toInt());
+  } else if (topic.equals("/search")) {
+    setSearch((int)payload.toInt());
+  } else if (topic.equals("/steps")) {
+    setSteps((int)payload.toInt());
+  } else if(topic.equals("/target")) {
+    setTarget(payload.toDouble());
+  }
 }
 
 void Stepper::setEnabled(boolean yes) {
@@ -39,14 +81,19 @@ void Stepper::_setResolution(uint8_t ms1, uint8_t ms2, uint8_t ms3) {
 
 void Stepper::setResolution(int res) {
   if (res >= 16) {
+    resolution = 16;
     _setResolution(HIGH, HIGH, HIGH);
   } else if (res >= 8) {
+    resolution = 8;
     _setResolution(HIGH, HIGH, LOW);
   } else if (res >= 4) {
+    resolution = 4;
     _setResolution(LOW, HIGH, LOW);
   } else if (res >= 2) {
+    resolution = 2;
     _setResolution(HIGH, LOW, LOW);
   } else {
+    resolution = 1;
     _setResolution(LOW, LOW, LOW);
   }
 }
@@ -59,9 +106,13 @@ void Stepper::setDirection(Direction dir) {
 
 void Stepper::setSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
 
-void Stepper::setSearch(boolean ok) { search = ok; }
+void Stepper::setSearch(int _threshold) { threshold = _threshold; }
 
 void Stepper::setSteps(int _steps) { steps = _steps; }
+
+void Stepper::setTarget(double _target) {
+  target = _target;
+}
 
 void Stepper::loop() {
   // check last step
@@ -88,12 +139,38 @@ void Stepper::loop() {
       stepping = true;
     }
 
-    // make on step if stepper is in single mode
+    // make one step if stepper is in single mode
     if (mode == Single && steps > 0) {
       // begin step
       steps--;
       digitalWrite(STEPPER_STEP, HIGH);
       stepping = true;
+    }
+
+    // check if in absolute mode
+    if (mode == Absolute) {
+      // calculate current mode
+      double move = 1.0 / 200.0 / resolution;
+
+      // check if we are still away from the target
+      if(position < target - move || position > target + move) {
+        // update direction
+        setDirection(position > target ? Left : Right);
+
+        // update position
+        if(position > target) {
+          position -= move;
+        } else {
+          position += move;
+        }
+
+        // begin step
+        digitalWrite(STEPPER_STEP, HIGH);
+        stepping = true;
+
+        // update position
+        client->publish("/position", String(position));
+      }
     }
 
     // check if a step has been made
@@ -110,14 +187,15 @@ void Stepper::loop() {
         client->publish("/sensor", String(sensor));
 
         // check if zero has been reached
-        if (search && sensor > 300) {
-          // TODO: Make threshold configurable.
+        if (threshold > 0 && sensor > threshold) {
+          // reset position
+          position = 0;
 
           // set drive mode to idle
           setDriveMode(Idle);
 
           // finish search
-          search = false;
+          threshold = 0;
         }
       }
     }
