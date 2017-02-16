@@ -12,20 +12,21 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
-enum DriveMode { IDLE, CONTINUOUS };
+enum DriveMode { Idle, Single, Continuous };
 
-enum Direction { LEFT, RIGHT };
+enum Direction { Left, Right };
 
 class Stepper {
 private:
   boolean enabled = false;
-  DriveMode mode = IDLE;
-  Direction direction = LEFT;
+  DriveMode mode = Idle;
+  Direction direction = Left;
   int speed = 5000;
   boolean search = false;
 
   unsigned long lastStep = 0;
   boolean stepping = false;
+  int steps = 0;
   int lastReading = 0;
   MQTTClient *client;
 
@@ -35,7 +36,7 @@ public:
   /**
    * Setup the stepper motor.
    */
-  void setup(MQTTClient*);
+  void setup(MQTTClient *);
 
   /**
    * Enable or disable the stepper motor.
@@ -78,6 +79,13 @@ public:
    * @param yes
    */
   void setSearch(boolean yes);
+
+  /**
+   * Set the amount of steps to move in Single mode.
+   *
+   * @param steps
+   */
+  void setSteps(int steps);
 
   /**
    * Do one loop.

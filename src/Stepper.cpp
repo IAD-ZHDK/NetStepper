@@ -1,6 +1,6 @@
 #include "Stepper.h"
 
-void Stepper::setup(MQTTClient * _client) {
+void Stepper::setup(MQTTClient *_client) {
   // save client reference
   client = _client;
 
@@ -14,9 +14,9 @@ void Stepper::setup(MQTTClient * _client) {
 
   // enforce defaults
   setEnabled(false);
-  setDriveMode(IDLE);
+  setDriveMode(Idle);
   setResolution(1);
-  setDirection(LEFT);
+  setDirection(Left);
   setSpeed(5000);
 
   // set default
@@ -26,12 +26,10 @@ void Stepper::setup(MQTTClient * _client) {
 void Stepper::setEnabled(boolean yes) {
   enabled = yes;
 
-  digitalWrite(STEPPER_EN, (uint8_t )(enabled ? LOW : HIGH));
+  digitalWrite(STEPPER_EN, (uint8_t)(enabled ? LOW : HIGH));
 }
 
-void Stepper::setDriveMode(DriveMode _mode) {
-  mode = _mode;
-}
+void Stepper::setDriveMode(DriveMode _mode) { mode = _mode; }
 
 void Stepper::_setResolution(uint8_t ms1, uint8_t ms2, uint8_t ms3) {
   digitalWrite(STEPPER_MS1, ms1);
@@ -56,12 +54,14 @@ void Stepper::setResolution(int res) {
 void Stepper::setDirection(Direction dir) {
   direction = dir;
 
-  digitalWrite(STEPPER_DIR, (uint8_t)(direction == LEFT ? LOW : HIGH));
+  digitalWrite(STEPPER_DIR, (uint8_t)(direction == Left ? LOW : HIGH));
 }
 
 void Stepper::setSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
 
 void Stepper::setSearch(boolean ok) { search = ok; }
+
+void Stepper::setSteps(int _steps) { steps = _steps; }
 
 void Stepper::loop() {
   // check last step
@@ -76,15 +76,28 @@ void Stepper::loop() {
       return;
     }
 
-    // make one step if stepper is enabled and in continuous mode
-    if (enabled && mode == CONTINUOUS) {
+    // return immediately if not enabled or in Idle mode
+    if (!enabled || mode == Idle) {
+      return;
+    }
+
+    // make one step if stepper is in continuous mode
+    if (mode == Continuous) {
       // begin step
       digitalWrite(STEPPER_STEP, HIGH);
       stepping = true;
     }
 
+    // make on step if stepper is in single mode
+    if (mode == Single && steps > 0) {
+      // begin step
+      steps--;
+      digitalWrite(STEPPER_STEP, HIGH);
+      stepping = true;
+    }
+
     // check if a step has been made
-    if(stepping) {
+    if (stepping) {
       // read sensor
       int sensor = analogRead(STEPPER_POS);
 
@@ -101,7 +114,7 @@ void Stepper::loop() {
           // TODO: Make threshold configurable.
 
           // set drive mode to idle
-          setDriveMode(IDLE);
+          setDriveMode(Idle);
 
           // finish search
           search = false;
