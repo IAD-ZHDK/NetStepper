@@ -5,7 +5,7 @@ void Manager::connect() {
     delay(1000);
   }
 
-  while (!client.connect(MANAER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
+  while (!client.connect(MANAGER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
     delay(1000);
   }
 

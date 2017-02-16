@@ -11,7 +11,7 @@
 #define MANAGER_PASS "internet"
 
 #define MANAGER_BROKER "broker.shiftr.io"
-#define MANAER_CLIENT_ID "arduino"
+#define MANAGER_CLIENT_ID "arduino"
 #define MANAGER_USERNAME "puppentanz"
 #define MANAGER_PASSWORD "puppentanz"
 
