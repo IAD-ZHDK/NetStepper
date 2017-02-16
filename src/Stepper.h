@@ -33,67 +33,14 @@ private:
   DriveMode lastStatus = Idle;
   MQTTClient *client;
 
-  void _setResolution(uint8_t, uint8_t, uint8_t);
+  void writePower(boolean on);
+  void writeResolution(int resolution);
+  void writeResolutionBits(uint8_t, uint8_t, uint8_t);
+  void writeDirection(Direction direction);
 
 public:
-  /**
-   * Setup the stepper motor.
-   */
   void setup(MQTTClient *);
-
-  /**
-   * Handle incoming messages.
-   *
-   * @param topic
-   * @param payload
-   */
   void handle(String topic, String payload);
-
-  /**
-   * Enable or disable the stepper motor.
-   *
-   * @param on
-   */
-  void setPower(boolean on);
-
-  /**
-   * Change the resolution of the stepper.
-   *
-   * @param resolution Should be between 1, 2, 4, 8 or 16.
-   */
-  void setResolution(int resolution);
-
-  /**
-   * Change the direction of the stepper.
-   *
-   * @param direction Should be -1, 0 or 1.
-   */
-  void setDirection(Direction direction);
-
-  /**
-   * Change the speed of the stepper. Lower is faster.
-   *
-   * @param speed Should be between 10 and 10000.
-   */
-  void setSpeed(int speed);
-
-  /**
-   * Enable or disable the zero point search.
-   *
-   * @param threshold Should be between 0 and 1024.
-   */
-  void setSearch(int threshold);
-
-  /**
-   * Set the absolute position in revolutions from the zero point.
-   *
-   * @param target
-   */
-  void setTarget(double target);
-
-  /**
-   * Do one loop.
-   */
   void loop();
 };
 
