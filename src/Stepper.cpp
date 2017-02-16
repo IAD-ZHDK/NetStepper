@@ -23,7 +23,7 @@ void Stepper::setup(MQTTClient *_client) {
   digitalWrite(STEPPER_STEP, LOW);
 
   // subscribe to topics
-  client->subscribe("/powered");
+  client->subscribe("/power");
   client->subscribe("/mode");
   client->subscribe("/resolution");
   client->subscribe("/direction");
@@ -33,7 +33,7 @@ void Stepper::setup(MQTTClient *_client) {
 }
 
 void Stepper::handle(String topic, String payload) {
-  if (topic.equals("/powered")) {
+  if (topic.equals("/power")) {
     if(payload.equals("on")) {
       setPower(true);
     } else if(payload.equals("off")) {
