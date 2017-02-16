@@ -12,7 +12,7 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
-enum DriveMode { Idle, Single, Absolute, Continuous };
+enum DriveMode { Idle, Absolute, Continuous };
 
 enum Direction { CW, CCW };
 
@@ -29,7 +29,6 @@ private:
 
   unsigned long lastStep = 0;
   boolean stepping = false;
-  int steps = 0;
   int lastReading = 0;
   MQTTClient *client;
 
@@ -90,13 +89,6 @@ public:
    * @param threshold Should be between 0 and 1024.
    */
   void setSearch(int threshold);
-
-  /**
-   * Set the amount of steps to move in Single mode.
-   *
-   * @param steps
-   */
-  void setSteps(int steps);
 
   /**
    * Set the absolute position in revolutions from the zero point.

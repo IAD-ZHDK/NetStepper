@@ -29,7 +29,6 @@ void Stepper::setup(MQTTClient *_client) {
   client->subscribe("/direction");
   client->subscribe("/speed");
   client->subscribe("/search");
-  client->subscribe("/steps");
   client->subscribe("/target");
 }
 
@@ -43,8 +42,6 @@ void Stepper::handle(String topic, String payload) {
   } else if (topic.equals("/mode")) {
     if (payload.equals("idle")) {
       setDriveMode(Idle);
-    } else if (payload.equals("single")) {
-      setDriveMode(Single);
     } else if(payload.equals("absolute")) {
       setDriveMode(Absolute);
     } else if (payload.equals("continuous")) {
@@ -62,8 +59,6 @@ void Stepper::handle(String topic, String payload) {
     setSpeed((int)payload.toInt());
   } else if (topic.equals("/search")) {
     setSearch((int)payload.toInt());
-  } else if (topic.equals("/steps")) {
-    setSteps((int)payload.toInt());
   } else if(topic.equals("/target")) {
     setTarget(payload.toDouble());
   }
@@ -112,8 +107,6 @@ void Stepper::setSpeed(int _speed) { speed = constrain(_speed, 10, 10000); }
 
 void Stepper::setSearch(int _threshold) { threshold = _threshold; }
 
-void Stepper::setSteps(int _steps) { steps = _steps; }
-
 void Stepper::setTarget(double _target) {
   target = _target;
 }
@@ -139,14 +132,6 @@ void Stepper::loop() {
     // make one step if stepper is in continuous mode
     if (mode == Continuous) {
       // begin step
-      digitalWrite(STEPPER_STEP, HIGH);
-      stepping = true;
-    }
-
-    // make one step if stepper is in single mode
-    if (mode == Single && steps > 0) {
-      // begin step
-      steps--;
       digitalWrite(STEPPER_STEP, HIGH);
       stepping = true;
     }
