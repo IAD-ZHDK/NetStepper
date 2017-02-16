@@ -5,7 +5,8 @@ void Manager::connect() {
     delay(1000);
   }
 
-  while (!client.connect(MANAGER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
+  while (
+      !client.connect(MANAGER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
     delay(1000);
   }
 
@@ -30,23 +31,24 @@ void Manager::setup() {
 void Manager::loop() {
   client.loop();
 
-  if(!client.connected()) {
+  if (!client.connected()) {
     connect();
   }
 
   stepper.loop();
 }
 
-void Manager::messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  if(topic.equals("/direction")) {
+void Manager::messageReceived(String topic, String payload, char *bytes,
+                              unsigned int length) {
+  if (topic.equals("/direction")) {
     stepper.changeDirection((int)payload.toInt());
-  } else if(topic.equals("/speed")) {
+  } else if (topic.equals("/speed")) {
     stepper.changeSpeed((int)payload.toInt());
-  } else if(topic.equals("/resolution")) {
+  } else if (topic.equals("/resolution")) {
     stepper.changeResolution((int)payload.toInt());
-  } else if(topic.equals("/enabled")) {
+  } else if (topic.equals("/enabled")) {
     stepper.enable(payload.toInt() == 1);
-  } else if(topic.equals("/search")) {
+  } else if (topic.equals("/search")) {
     stepper.enableSearch(payload.toInt() == 1);
   }
 }

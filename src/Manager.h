@@ -1,6 +1,6 @@
+#include <MQTTClient.h>
 #include <SPI.h>
 #include <WiFi101.h>
-#include <MQTTClient.h>
 
 #include "Stepper.h"
 
@@ -20,10 +20,11 @@ class Manager {
   MQTTClient client;
   Stepper stepper;
   void connect();
+
 public:
   void setup();
   void loop();
   void messageReceived(String, String, char *, unsigned int);
 };
 
-#endif //NETSTEPPER_MANAGER_H
+#endif // NETSTEPPER_MANAGER_H
