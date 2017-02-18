@@ -16,8 +16,7 @@ void Manager::connect() {
 void Manager::setup() {
   WiFi.begin(MANAGER_SSID, MANAGER_PASS);
 
-  client.begin(net);
-  client.setHost(MANAGER_BROKER);
+  client.begin(MANAGER_BROKER, net);
 
   connect();
 }
