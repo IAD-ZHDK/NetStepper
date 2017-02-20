@@ -40,6 +40,22 @@ void Stepper::writeStep(boolean on) {
   digitalWrite(STEPPER_STEP, (uint8_t)(on ? HIGH : LOW));
 }
 
+int Stepper::readSensor() {
+  static int LM[STEPPER_SMOOTHING];
+  static uint8_t index = 0;
+  static long sum = 0;
+  static uint8_t count = 0;
+
+  sum -= LM[index];
+  LM[index] = analogRead(STEPPER_POS);
+  sum += LM[index];
+  index++;
+  index = (uint8_t)(index % STEPPER_SMOOTHING);
+  if (count < STEPPER_SMOOTHING) count++;
+
+  return (int)(sum / count);
+}
+
 void Stepper::setup(MQTTClient *_client) {
   // save client reference
   client = _client;
@@ -165,7 +181,7 @@ void Stepper::loop() {
     writeStep(true);
 
     // read sensor
-    int sensor = analogRead(STEPPER_POS);
+    int sensor = this->readSensor();
 
     // check if sensor has changed
     if (sensor != lastReading) {
@@ -188,7 +204,11 @@ void Stepper::loop() {
       }
     }
 
-    // publish position
-    client->publish("/position", String(position));
+    // publish position if changed
+    if(position != lastPosition) {
+      lastPosition = position;
+
+      client->publish("/position", String(position));
+    }
   }
 }

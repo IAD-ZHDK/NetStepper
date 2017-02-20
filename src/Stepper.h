@@ -12,6 +12,8 @@
 #define STEPPER_DIR 0
 #define STEPPER_POS 0
 
+#define STEPPER_SMOOTHING 10
+
 enum DriveMode { Unset, Idle, Absolute, Continuous };
 
 enum Direction { CW, CCW };
@@ -30,6 +32,7 @@ private:
   unsigned long lastStep = 0;
   boolean stepping = false;
   int lastReading = 0;
+  double lastPosition = 0.0;
   DriveMode lastStatus = Idle;
   MQTTClient *client;
 
@@ -38,6 +41,7 @@ private:
   void writeResolutionBits(uint8_t ms1, uint8_t ms2, uint8_t ms3);
   void writeDirection(Direction direction);
   void writeStep(boolean on);
+  int readSensor();
 
 public:
   void setup(MQTTClient *);
