@@ -140,7 +140,7 @@ void Stepper::loop() {
     }
 
     // return immediately if not powered or in Idle mode
-    if (!powered || mode == Idle) {
+    if (!powered || mode == Unset || mode == Idle) {
       return;
     }
 
