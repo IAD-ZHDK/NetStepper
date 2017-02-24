@@ -51,7 +51,8 @@ int Stepper::readSensor() {
   sum += LM[index];
   index++;
   index = (uint8_t)(index % STEPPER_SMOOTHING);
-  if (count < STEPPER_SMOOTHING) count++;
+  if (count < STEPPER_SMOOTHING)
+    count++;
 
   return (int)(sum / count);
 }
@@ -86,15 +87,15 @@ void Stepper::setup(MQTTClient *_client) {
 
 void Stepper::handle(String topic, String payload) {
   if (topic.equals("/power")) {
-    if(payload.equals("on")) {
+    if (payload.equals("on")) {
       writePower(true);
-    } else if(payload.equals("off")) {
+    } else if (payload.equals("off")) {
       writePower(false);
     }
   } else if (topic.equals("/stop")) {
     mode = Idle;
   } else if (topic.equals("/resolution")) {
-    writeResolution((int) payload.toInt());
+    writeResolution((int)payload.toInt());
   } else if (topic.equals("/direction")) {
     mode = Continuous;
 
@@ -108,7 +109,7 @@ void Stepper::handle(String topic, String payload) {
   } else if (topic.equals("/search")) {
     mode = Absolute;
     threshold = (int)payload.toInt();
-  } else if(topic.equals("/target")) {
+  } else if (topic.equals("/target")) {
     mode = Absolute;
     target = payload.toDouble();
   }
@@ -127,7 +128,7 @@ void Stepper::loop() {
     }
 
     // publish status if changed
-    if(mode != lastStatus) {
+    if (mode != lastStatus) {
       lastStatus = mode;
 
       if (mode == Idle) {
@@ -153,10 +154,10 @@ void Stepper::loop() {
     double move = 1.0 / 200.0 / resolution;
 
     // handle continuous mode
-    if(mode == Continuous) {
-      if(direction == CW) {
+    if (mode == Continuous) {
+      if (direction == CW) {
         position -= move;
-      } else if(direction == CCW) {
+      } else if (direction == CCW) {
         position += move;
       }
     }
@@ -167,9 +168,9 @@ void Stepper::loop() {
       writeDirection(position < target ? CW : CCW);
 
       // update position
-      if(position > target + move) {
+      if (position > target + move) {
         position -= move;
-      } else if(position < target - move) {
+      } else if (position < target - move) {
         position += move;
       } else {
         position = target;
@@ -205,7 +206,7 @@ void Stepper::loop() {
     }
 
     // publish position if changed
-    if(position != lastPosition) {
+    if (position != lastPosition) {
       lastPosition = position;
 
       client->publish("/position", String(position));
