@@ -149,85 +149,6 @@
 <library name="Library">
 <description>Custom library by IAD ZHdK.</description>
 <packages>
-<package name="MKR1000-SOCKET">
-<description>The Arduino MKR1000 Socket.</description>
-<pad name="1" x="-16.51" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="2" x="-13.97" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="3" x="-11.43" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="4" x="-8.89" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="5" x="-6.35" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="6" x="-3.81" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="7" x="-1.27" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="8" x="1.27" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="9" x="3.81" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="10" x="6.35" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="11" x="8.89" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="12" x="11.43" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="13" x="13.97" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="14" x="16.51" y="-10.16" drill="1.016" diameter="1.8796" rot="R90"/>
-<rectangle x1="-1.524" y1="-10.414" x2="-1.016" y2="-9.906" layer="51"/>
-<rectangle x1="-4.064" y1="-10.414" x2="-3.556" y2="-9.906" layer="51"/>
-<rectangle x1="-6.604" y1="-10.414" x2="-6.096" y2="-9.906" layer="51"/>
-<rectangle x1="-9.144" y1="-10.414" x2="-8.636" y2="-9.906" layer="51"/>
-<rectangle x1="-11.684" y1="-10.414" x2="-11.176" y2="-9.906" layer="51"/>
-<rectangle x1="-14.224" y1="-10.414" x2="-13.716" y2="-9.906" layer="51"/>
-<rectangle x1="-16.764" y1="-10.414" x2="-16.256" y2="-9.906" layer="51"/>
-<rectangle x1="16.256" y1="-10.414" x2="16.764" y2="-9.906" layer="51"/>
-<rectangle x1="13.716" y1="-10.414" x2="14.224" y2="-9.906" layer="51"/>
-<rectangle x1="11.176" y1="-10.414" x2="11.684" y2="-9.906" layer="51"/>
-<rectangle x1="8.636" y1="-10.414" x2="9.144" y2="-9.906" layer="51"/>
-<rectangle x1="6.096" y1="-10.414" x2="6.604" y2="-9.906" layer="51"/>
-<rectangle x1="3.556" y1="-10.414" x2="4.064" y2="-9.906" layer="51"/>
-<rectangle x1="1.016" y1="-10.414" x2="1.524" y2="-9.906" layer="51"/>
-<pad name="15" x="16.51" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="16" x="13.97" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="17" x="11.43" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="18" x="8.89" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="19" x="6.35" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="20" x="3.81" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="21" x="1.27" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="22" x="-1.27" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="23" x="-3.81" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="24" x="-6.35" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="25" x="-8.89" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="26" x="-11.43" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="27" x="-13.97" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<pad name="28" x="-16.51" y="10.16" drill="1.016" diameter="1.8796" rot="R270"/>
-<rectangle x1="-1.524" y1="9.906" x2="-1.016" y2="10.414" layer="51"/>
-<rectangle x1="-4.064" y1="9.906" x2="-3.556" y2="10.414" layer="51"/>
-<rectangle x1="-6.604" y1="9.906" x2="-6.096" y2="10.414" layer="51"/>
-<rectangle x1="-9.144" y1="9.906" x2="-8.636" y2="10.414" layer="51"/>
-<rectangle x1="-11.684" y1="9.906" x2="-11.176" y2="10.414" layer="51"/>
-<rectangle x1="-14.224" y1="9.906" x2="-13.716" y2="10.414" layer="51"/>
-<rectangle x1="-16.764" y1="9.906" x2="-16.256" y2="10.414" layer="51"/>
-<rectangle x1="16.256" y1="9.906" x2="16.764" y2="10.414" layer="51"/>
-<rectangle x1="13.716" y1="9.906" x2="14.224" y2="10.414" layer="51"/>
-<rectangle x1="11.176" y1="9.906" x2="11.684" y2="10.414" layer="51"/>
-<rectangle x1="8.636" y1="9.906" x2="9.144" y2="10.414" layer="51"/>
-<rectangle x1="6.096" y1="9.906" x2="6.604" y2="10.414" layer="51"/>
-<rectangle x1="3.556" y1="9.906" x2="4.064" y2="10.414" layer="51"/>
-<rectangle x1="1.016" y1="9.906" x2="1.524" y2="10.414" layer="51"/>
-<wire x1="24.13" y1="12.7" x2="24.13" y2="-12.7" width="0.127" layer="21"/>
-<wire x1="24.13" y1="-12.7" x2="-24.13" y2="-12.7" width="0.127" layer="21"/>
-<wire x1="-24.13" y1="-12.7" x2="-31.75" y2="-12.7" width="0.127" layer="21"/>
-<wire x1="-31.75" y1="-12.7" x2="-39.37" y2="-12.7" width="0.127" layer="21"/>
-<wire x1="-39.37" y1="-12.7" x2="-39.37" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="-39.37" y1="-2.54" x2="-39.37" y2="2.54" width="0.127" layer="21"/>
-<wire x1="-39.37" y1="2.54" x2="-39.37" y2="12.7" width="0.127" layer="21"/>
-<wire x1="-39.37" y1="12.7" x2="24.13" y2="12.7" width="0.127" layer="21"/>
-<wire x1="-39.37" y1="2.54" x2="-35.56" y2="2.54" width="0.127" layer="21"/>
-<wire x1="-35.56" y1="2.54" x2="-35.56" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="-35.56" y1="-2.54" x2="-39.37" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="-31.75" y1="-12.7" x2="-31.75" y2="-7.62" width="0.127" layer="21"/>
-<wire x1="-31.75" y1="-7.62" x2="-24.13" y2="-7.62" width="0.127" layer="21"/>
-<wire x1="-24.13" y1="-7.62" x2="-24.13" y2="-12.7" width="0.127" layer="21"/>
-<wire x1="-8.89" y1="6.35" x2="-8.89" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="-8.89" y1="-6.35" x2="17.78" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="17.78" y1="-6.35" x2="17.78" y2="6.35" width="0.127" layer="21"/>
-<wire x1="17.78" y1="6.35" x2="-8.89" y2="6.35" width="0.127" layer="21"/>
-<text x="-16.51" y="13.97" size="1.27" layer="25">&gt;NAME</text>
-<text x="-16.51" y="-15.24" size="1.27" layer="27">&gt;VALUE</text>
-</package>
 <package name="POLOLU-MD09B">
 <description>The Pololu MD09B stepper controller.</description>
 <pad name="1" x="-6.35" y="8.89" drill="1.016" diameter="1.8796"/>
@@ -271,43 +192,6 @@
 </package>
 </packages>
 <symbols>
-<symbol name="MKR1000">
-<description>The Arduino MKR1000 Pinout.</description>
-<pin name="AREF" x="-20.32" y="17.78" length="middle"/>
-<pin name="A0/DAC0" x="-20.32" y="15.24" length="middle"/>
-<pin name="A1(INT)" x="-20.32" y="12.7" length="middle"/>
-<pin name="A2(INT)" x="-20.32" y="10.16" length="middle"/>
-<pin name="A3(PWM)" x="-20.32" y="7.62" length="middle"/>
-<pin name="A4(PWM)" x="-20.32" y="5.08" length="middle"/>
-<pin name="A5" x="-20.32" y="2.54" length="middle"/>
-<pin name="A6" x="-20.32" y="0" length="middle"/>
-<pin name="D0(INT)" x="-20.32" y="-2.54" length="middle"/>
-<pin name="D1(INT)" x="-20.32" y="-5.08" length="middle"/>
-<pin name="D2" x="-20.32" y="-7.62" length="middle"/>
-<pin name="D3" x="-20.32" y="-10.16" length="middle"/>
-<pin name="D4(INT)" x="-20.32" y="-12.7" length="middle"/>
-<pin name="D5(INT)" x="-20.32" y="-15.24" length="middle"/>
-<pin name="D6(INT)" x="20.32" y="-15.24" length="middle" rot="R180"/>
-<pin name="D7(INT)" x="20.32" y="-12.7" length="middle" rot="R180"/>
-<pin name="D8(INT,MOSI)" x="20.32" y="-10.16" length="middle" rot="R180"/>
-<pin name="D9(SCK)" x="20.32" y="-7.62" length="middle" rot="R180"/>
-<pin name="D10(MISO)" x="20.32" y="-5.08" length="middle" rot="R180"/>
-<pin name="D11(SDA)" x="20.32" y="-2.54" length="middle" rot="R180"/>
-<pin name="D12(SCL)" x="20.32" y="0" length="middle" rot="R180"/>
-<pin name="D13(RX)" x="20.32" y="2.54" length="middle" rot="R180"/>
-<pin name="D14(TX)" x="20.32" y="5.08" length="middle" rot="R180"/>
-<pin name="RESET" x="20.32" y="7.62" length="middle" rot="R180"/>
-<pin name="GND" x="20.32" y="10.16" length="middle" rot="R180"/>
-<pin name="VCC" x="20.32" y="12.7" length="middle" rot="R180"/>
-<pin name="VIN" x="20.32" y="15.24" length="middle" rot="R180"/>
-<pin name="5V" x="20.32" y="17.78" length="middle" rot="R180"/>
-<wire x1="-15.24" y1="20.32" x2="15.24" y2="20.32" width="0.254" layer="94"/>
-<wire x1="15.24" y1="20.32" x2="15.24" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-17.78" x2="-15.24" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-17.78" x2="-15.24" y2="20.32" width="0.254" layer="94"/>
-<text x="-12.7" y="22.86" size="1.27" layer="95">&gt;NAME</text>
-<text x="-12.7" y="-20.32" size="1.27" layer="96">&gt;VALUE</text>
-</symbol>
 <symbol name="POLOLU-MD09B">
 <description>The Pololu MD09B stepper controller.</description>
 <pin name="EN" x="-15.24" y="10.16" length="middle"/>
@@ -335,49 +219,6 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MKR1000">
-<description>The Arduino MKR1000.</description>
-<gates>
-<gate name="G$1" symbol="MKR1000" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="MKR1000-SOCKET">
-<connects>
-<connect gate="G$1" pin="5V" pad="28"/>
-<connect gate="G$1" pin="A0/DAC0" pad="2"/>
-<connect gate="G$1" pin="A1(INT)" pad="3"/>
-<connect gate="G$1" pin="A2(INT)" pad="4"/>
-<connect gate="G$1" pin="A3(PWM)" pad="5"/>
-<connect gate="G$1" pin="A4(PWM)" pad="6"/>
-<connect gate="G$1" pin="A5" pad="7"/>
-<connect gate="G$1" pin="A6" pad="8"/>
-<connect gate="G$1" pin="AREF" pad="1"/>
-<connect gate="G$1" pin="D0(INT)" pad="9"/>
-<connect gate="G$1" pin="D1(INT)" pad="10"/>
-<connect gate="G$1" pin="D10(MISO)" pad="19"/>
-<connect gate="G$1" pin="D11(SDA)" pad="20"/>
-<connect gate="G$1" pin="D12(SCL)" pad="21"/>
-<connect gate="G$1" pin="D13(RX)" pad="22"/>
-<connect gate="G$1" pin="D14(TX)" pad="23"/>
-<connect gate="G$1" pin="D2" pad="11"/>
-<connect gate="G$1" pin="D3" pad="12"/>
-<connect gate="G$1" pin="D4(INT)" pad="13"/>
-<connect gate="G$1" pin="D5(INT)" pad="14"/>
-<connect gate="G$1" pin="D6(INT)" pad="15"/>
-<connect gate="G$1" pin="D7(INT)" pad="16"/>
-<connect gate="G$1" pin="D8(INT,MOSI)" pad="17"/>
-<connect gate="G$1" pin="D9(SCK)" pad="18"/>
-<connect gate="G$1" pin="GND" pad="25"/>
-<connect gate="G$1" pin="RESET" pad="24"/>
-<connect gate="G$1" pin="VCC" pad="26"/>
-<connect gate="G$1" pin="VIN" pad="27"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="POLOLU-MD09B">
 <description>The Pololu MD09B stepper controller.</description>
 <gates>
@@ -8975,7 +8816,6 @@ Added bigger pads to the TO-92 package</description>
 </class>
 </classes>
 <parts>
-<part name="MCU1" library="Library" deviceset="MKR1000" device=""/>
 <part name="STC1" library="Library" deviceset="POLOLU-MD09B" device=""/>
 <part name="PW1" library="SparkFun-Connectors" deviceset="CONN_02" device="5MM"/>
 <part name="ST1" library="SparkFun-Connectors" deviceset="CONN_04" device="LONGPADS"/>
@@ -8991,7 +8831,6 @@ Added bigger pads to the TO-92 package</description>
 <plain>
 </plain>
 <instances>
-<instance part="MCU1" gate="G$1" x="30.48" y="60.96"/>
 <instance part="STC1" gate="G$1" x="48.26" y="12.7"/>
 <instance part="PW1" gate="G$1" x="157.48" y="45.72"/>
 <instance part="ST1" gate="G$1" x="160.02" y="73.66"/>
@@ -9000,17 +8839,12 @@ Added bigger pads to the TO-92 package</description>
 <instance part="C2" gate="G$1" x="175.26" y="7.62"/>
 <instance part="C3" gate="G$1" x="106.68" y="33.02" rot="R90"/>
 <instance part="DS1" gate="J$1" x="99.06" y="73.66"/>
-<instance part="U$1" gate="G$1" x="-43.18" y="60.96"/>
+<instance part="U$1" gate="G$1" x="43.18" y="78.74"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="GND"/>
-<wire x1="50.8" y1="71.12" x2="71.12" y2="71.12" width="0.1524" layer="91"/>
-<label x="58.42" y="71.12" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="STC1" gate="G$1" pin="GND"/>
 <wire x1="60.96" y1="5.08" x2="78.74" y2="5.08" width="0.1524" layer="91"/>
@@ -9050,13 +8884,23 @@ Added bigger pads to the TO-92 package</description>
 <wire x1="106.68" y1="71.12" x2="129.54" y2="71.12" width="0.1524" layer="91"/>
 <label x="114.3" y="71.12" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND3"/>
+<wire x1="60.96" y1="101.6" x2="76.2" y2="101.6" width="0.1524" layer="91"/>
+<label x="68.58" y="101.6" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND2"/>
+<wire x1="60.96" y1="86.36" x2="76.2" y2="86.36" width="0.1524" layer="91"/>
+<label x="68.58" y="86.36" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND1"/>
+<wire x1="27.94" y1="68.58" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
+<label x="10.16" y="68.58" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="3V" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="VCC"/>
-<wire x1="50.8" y1="73.66" x2="71.12" y2="73.66" width="0.1524" layer="91"/>
-<label x="58.42" y="73.66" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="STC1" gate="G$1" pin="VDD"/>
 <wire x1="60.96" y1="7.62" x2="78.74" y2="7.62" width="0.1524" layer="91"/>
@@ -9066,6 +8910,11 @@ Added bigger pads to the TO-92 package</description>
 <pinref part="DS1" gate="J$1" pin="3"/>
 <wire x1="106.68" y1="76.2" x2="129.54" y2="76.2" width="0.1524" layer="91"/>
 <label x="114.3" y="76.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="3V3"/>
+<wire x1="27.94" y1="101.6" x2="10.16" y2="101.6" width="0.1524" layer="91"/>
+<label x="10.16" y="101.6" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="12V" class="0">
@@ -9149,9 +8998,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D5(INT)"/>
-<wire x1="10.16" y1="45.72" x2="-7.62" y2="45.72" width="0.1524" layer="91"/>
-<label x="-7.62" y="45.72" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO12"/>
+<wire x1="27.94" y1="71.12" x2="10.16" y2="71.12" width="0.1524" layer="91"/>
+<label x="10.16" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STC_DIR" class="0">
@@ -9161,9 +9010,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="5.08" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D0(INT)"/>
-<wire x1="10.16" y1="58.42" x2="-7.62" y2="58.42" width="0.1524" layer="91"/>
-<label x="-7.62" y="58.42" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO33"/>
+<wire x1="27.94" y1="83.82" x2="10.16" y2="83.82" width="0.1524" layer="91"/>
+<label x="10.16" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STC_STEP" class="0">
@@ -9173,9 +9022,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="7.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D1(INT)"/>
-<wire x1="10.16" y1="55.88" x2="-7.62" y2="55.88" width="0.1524" layer="91"/>
-<label x="-7.62" y="55.88" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO25"/>
+<wire x1="27.94" y1="81.28" x2="10.16" y2="81.28" width="0.1524" layer="91"/>
+<label x="10.16" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STC_MS3" class="0">
@@ -9185,9 +9034,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D2"/>
-<wire x1="10.16" y1="53.34" x2="-7.62" y2="53.34" width="0.1524" layer="91"/>
-<label x="-7.62" y="53.34" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO26"/>
+<wire x1="27.94" y1="78.74" x2="10.16" y2="78.74" width="0.1524" layer="91"/>
+<label x="10.16" y="78.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STC_MS1" class="0">
@@ -9197,9 +9046,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D4(INT)"/>
-<wire x1="10.16" y1="48.26" x2="-7.62" y2="48.26" width="0.1524" layer="91"/>
-<label x="-7.62" y="48.26" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO14"/>
+<wire x1="27.94" y1="73.66" x2="10.16" y2="73.66" width="0.1524" layer="91"/>
+<label x="10.16" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STC_MS2" class="0">
@@ -9209,9 +9058,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="15.24" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="D3"/>
-<wire x1="10.16" y1="50.8" x2="-7.62" y2="50.8" width="0.1524" layer="91"/>
-<label x="-7.62" y="50.8" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO27"/>
+<wire x1="27.94" y1="76.2" x2="10.16" y2="76.2" width="0.1524" layer="91"/>
+<label x="10.16" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -9225,9 +9074,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="180.34" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="VIN"/>
-<wire x1="50.8" y1="76.2" x2="71.12" y2="76.2" width="0.1524" layer="91"/>
-<label x="58.42" y="76.2" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="5V"/>
+<wire x1="27.94" y1="55.88" x2="10.16" y2="55.88" width="0.1524" layer="91"/>
+<label x="10.16" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -9246,9 +9095,9 @@ Added bigger pads to the TO-92 package</description>
 <label x="114.3" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MCU1" gate="G$1" pin="A0/DAC0"/>
-<wire x1="10.16" y1="76.2" x2="-7.62" y2="76.2" width="0.1524" layer="91"/>
-<label x="-7.62" y="76.2" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="IO13"/>
+<wire x1="27.94" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
+<label x="10.16" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
