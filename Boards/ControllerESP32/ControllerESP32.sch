@@ -9129,6 +9129,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <sheets>
 <sheet>
 <plain>
+<text x="93.98" y="78.74" size="1.778" layer="94">Use IO19 and IO18 for LEDs</text>
 </plain>
 <instances>
 <instance part="STC1" gate="G$1" x="48.26" y="12.7"/>
@@ -9438,26 +9439,26 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="LED1" class="0">
 <segment>
-<pinref part="MCU1" gate="G$1" pin="SD2"/>
-<wire x1="27.94" y1="63.5" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
-<label x="10.16" y="63.5" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="27.94" y1="-22.86" x2="45.72" y2="-22.86" width="0.1524" layer="91"/>
 <label x="38.1" y="-22.86" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="MCU1" gate="G$1" pin="IO19"/>
+<wire x1="60.96" y1="83.82" x2="76.2" y2="83.82" width="0.1524" layer="91"/>
+<label x="68.58" y="83.82" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED2" class="0">
-<segment>
-<pinref part="MCU1" gate="G$1" pin="SD3"/>
-<wire x1="27.94" y1="60.96" x2="10.16" y2="60.96" width="0.1524" layer="91"/>
-<label x="10.16" y="60.96" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="D2" gate="G$1" pin="A"/>
 <wire x1="96.52" y1="-22.86" x2="114.3" y2="-22.86" width="0.1524" layer="91"/>
 <label x="106.68" y="-22.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="MCU1" gate="G$1" pin="IO18"/>
+<wire x1="60.96" y1="81.28" x2="76.2" y2="81.28" width="0.1524" layer="91"/>
+<label x="68.58" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
