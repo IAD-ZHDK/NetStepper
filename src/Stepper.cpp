@@ -1,4 +1,20 @@
 #include "Stepper.h"
+#include "Manager.h"
+#include "Utils.h"
+
+Stepper::Stepper() {
+  // prepare topics
+  powerTopic = prefix(MANAGER_ID, "/power");
+  stopTopic = prefix(MANAGER_ID, "/stop");
+  resolutionTopic = prefix(MANAGER_ID, "/resolution");
+  directionTopic = prefix(MANAGER_ID, "/direction");
+  speedTopic = prefix(MANAGER_ID, "/speed");
+  searchTopic = prefix(MANAGER_ID, "/search");
+  targetTopic = prefix(MANAGER_ID, "/target");
+  statusTopic = prefix(MANAGER_ID, "/status");
+  sensorTopic = prefix(MANAGER_ID, "/sensor");
+  positionTopic = prefix(MANAGER_ID, "/position");
+}
 
 void Stepper::writePower(boolean on) {
   powered = on;
@@ -75,27 +91,27 @@ void Stepper::setup(MQTTClient *_client) {
   writeStep(false);
 
   // subscribe to topics
-  client->subscribe("/power");
-  client->subscribe("/stop");
-  client->subscribe("/resolution");
-  client->subscribe("/direction");
-  client->subscribe("/speed");
-  client->subscribe("/search");
-  client->subscribe("/target");
+  client->subscribe(powerTopic.c_str());
+  client->subscribe(stopTopic.c_str());
+  client->subscribe(resolutionTopic.c_str());
+  client->subscribe(directionTopic.c_str());
+  client->subscribe(speedTopic.c_str());
+  client->subscribe(searchTopic.c_str());
+  client->subscribe(targetTopic.c_str());
 }
 
 void Stepper::handle(String topic, String payload) {
-  if (topic.equals("/power")) {
+  if (topic.equals(powerTopic)) {
     if (payload.equals("on")) {
       writePower(true);
     } else if (payload.equals("off")) {
       writePower(false);
     }
-  } else if (topic.equals("/stop")) {
+  } else if (topic.equals(stopTopic)) {
     mode = Idle;
-  } else if (topic.equals("/resolution")) {
+  } else if (topic.equals(resolutionTopic)) {
     writeResolution((int)payload.toInt());
-  } else if (topic.equals("/direction")) {
+  } else if (topic.equals(directionTopic)) {
     mode = Continuous;
 
     if (payload.equals("cw")) {
@@ -103,12 +119,12 @@ void Stepper::handle(String topic, String payload) {
     } else if (payload.equals("ccw")) {
       writeDirection(CCW);
     }
-  } else if (topic.equals("/speed")) {
+  } else if (topic.equals(speedTopic)) {
     speed = constrain((int)payload.toInt(), 10, 10000);
-  } else if (topic.equals("/search")) {
+  } else if (topic.equals(searchTopic)) {
     mode = Absolute;
     threshold = (int)payload.toInt();
-  } else if (topic.equals("/target")) {
+  } else if (topic.equals(targetTopic)) {
     mode = Absolute;
     target = payload.toDouble();
   }
@@ -131,11 +147,11 @@ void Stepper::loop() {
       lastStatus = mode;
 
       if (mode == Idle) {
-        client->publish("/status", "idle");
+        client->publish(statusTopic, "idle");
       } else if (mode == Continuous) {
-        client->publish("/status", "continuous");
+        client->publish(statusTopic, "continuous");
       } else if (mode == Absolute) {
-        client->publish("/status", "absolute");
+        client->publish(statusTopic, "absolute");
       }
     }
 
@@ -189,7 +205,7 @@ void Stepper::loop() {
       lastReading = sensor;
 
       // publish sensor value
-      client->publish("/sensor", String(sensor));
+      client->publish(sensorTopic, String(sensor));
 
       // check if zero has been reached
       if (threshold > 0 && sensor > threshold) {
@@ -208,7 +224,7 @@ void Stepper::loop() {
     if (position != lastPosition) {
       lastPosition = position;
 
-      client->publish("/position", String(position));
+      client->publish(positionTopic, String(position));
     }
   }
 }

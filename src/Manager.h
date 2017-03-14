@@ -11,9 +11,10 @@
 #define MANAGER_PASS "internet"
 
 #define MANAGER_BROKER "broker.shiftr.io"
-#define MANAGER_CLIENT_ID "NetStepper/1"
 #define MANAGER_USERNAME "try"
 #define MANAGER_PASSWORD "try"
+
+#define MANAGER_ID "1"
 
 class Manager {
   WiFiClient net;

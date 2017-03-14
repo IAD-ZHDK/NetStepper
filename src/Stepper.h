@@ -36,6 +36,17 @@ class Stepper {
   DriveMode lastStatus = Idle;
   MQTTClient *client;
 
+  String powerTopic;
+  String stopTopic;
+  String resolutionTopic;
+  String directionTopic;
+  String speedTopic;
+  String searchTopic;
+  String targetTopic;
+  String statusTopic;
+  String sensorTopic;
+  String positionTopic;
+
   void writePower(boolean on);
   void writeResolution(int resolution);
   void writeResolutionBits(uint8_t ms1, uint8_t ms2, uint8_t ms3);
@@ -44,6 +55,7 @@ class Stepper {
   int readSensor();
 
  public:
+  Stepper();
   void setup(MQTTClient *);
   void handle(String topic, String payload);
   void loop();

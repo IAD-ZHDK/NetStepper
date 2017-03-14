@@ -10,8 +10,12 @@ include_directories(
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-        NetStepper.ino
+        src/Manager.cpp
+        src/Manager.h
         src/Stepper.cpp
-        src/Stepper.h src/Manager.cpp src/Manager.h)
+        src/Stepper.h
+        src/Utils.cpp
+        src/Utils.h
+        NetStepper.ino)
 
 add_executable(NetStepper ${SOURCE_FILES})
