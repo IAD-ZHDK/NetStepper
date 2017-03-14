@@ -1,14 +1,11 @@
 #include "Manager.h"
-#include "Utils.h"
 
 void Manager::connect() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
   }
 
-  String id = suffix("NetStepper/", MANAGER_ID);
-
-  while (!client.connect(id.c_str(), MANAGER_USERNAME, MANAGER_PASSWORD)) {
+  while (!client.connect("NetStepper/" MANAGER_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
     delay(1000);
   }
 
