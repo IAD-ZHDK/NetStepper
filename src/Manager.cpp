@@ -5,8 +5,7 @@ void Manager::connect() {
     delay(1000);
   }
 
-  while (
-      !client.connect(MANAGER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
+  while (!client.connect(MANAGER_CLIENT_ID, MANAGER_USERNAME, MANAGER_PASSWORD)) {
     delay(1000);
   }
 
@@ -31,6 +30,4 @@ void Manager::loop() {
   stepper.loop();
 }
 
-void Manager::handle(String topic, String payload) {
-  stepper.handle(topic, payload);
-}
+void Manager::handle(String topic, String payload) { stepper.handle(topic, payload); }

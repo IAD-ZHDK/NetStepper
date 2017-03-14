@@ -21,10 +21,10 @@ class Manager {
   Stepper stepper;
   void connect();
 
-public:
+ public:
   void setup();
   void loop();
   void handle(String, String);
 };
 
-#endif // NETSTEPPER_MANAGER_H
+#endif  // NETSTEPPER_MANAGER_H

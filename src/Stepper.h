@@ -19,7 +19,7 @@ enum DriveMode { Unset, Idle, Absolute, Continuous };
 enum Direction { CW, CCW };
 
 class Stepper {
-private:
+ private:
   boolean powered = false;
   DriveMode mode = Unset;
   int resolution = 1;
@@ -43,10 +43,10 @@ private:
   void writeStep(boolean on);
   int readSensor();
 
-public:
+ public:
   void setup(MQTTClient *);
   void handle(String topic, String payload);
   void loop();
 };
 
-#endif // NETSTEPPER_STEPPER_H
+#endif  // NETSTEPPER_STEPPER_H

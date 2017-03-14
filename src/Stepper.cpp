@@ -51,8 +51,7 @@ int Stepper::readSensor() {
   sum += LM[index];
   index++;
   index = (uint8_t)(index % STEPPER_SMOOTHING);
-  if (count < STEPPER_SMOOTHING)
-    count++;
+  if (count < STEPPER_SMOOTHING) count++;
 
   return (int)(sum / count);
 }
