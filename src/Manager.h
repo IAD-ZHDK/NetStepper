@@ -11,9 +11,9 @@
 #define MANAGER_PASS "internet"
 
 #define MANAGER_BROKER "broker.shiftr.io"
-#define MANAGER_CLIENT_ID "arduino"
-#define MANAGER_USERNAME "puppentanz"
-#define MANAGER_PASSWORD "puppentanz"
+#define MANAGER_CLIENT_ID "NetStepper/1"
+#define MANAGER_USERNAME "try"
+#define MANAGER_PASSWORD "try"
 
 class Manager {
   WiFiClient net;
