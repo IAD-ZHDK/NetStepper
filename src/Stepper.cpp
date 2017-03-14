@@ -91,13 +91,13 @@ void Stepper::setup(MQTTClient *_client) {
   writeStep(false);
 
   // subscribe to topics
-  client->subscribe(powerTopic.c_str());
-  client->subscribe(stopTopic.c_str());
-  client->subscribe(resolutionTopic.c_str());
-  client->subscribe(directionTopic.c_str());
-  client->subscribe(speedTopic.c_str());
-  client->subscribe(searchTopic.c_str());
-  client->subscribe(targetTopic.c_str());
+  client->subscribe(powerTopic);
+  client->subscribe(stopTopic);
+  client->subscribe(resolutionTopic);
+  client->subscribe(directionTopic);
+  client->subscribe(speedTopic);
+  client->subscribe(searchTopic);
+  client->subscribe(targetTopic);
 }
 
 void Stepper::handle(String topic, String payload) {
