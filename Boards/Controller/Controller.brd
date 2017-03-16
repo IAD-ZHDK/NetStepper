@@ -164,10 +164,10 @@ SIG1
 <text x="6.349996875" y="41.459071875" size="1" layer="1" font="vector" distance="150" align="bottom-right">GND
 SIG2
 3V3</text>
-<text x="44.88285625" y="6.277853125" size="1" layer="1" font="vector" distance="150" rot="R90" align="bottom-right">BLUE
-YLLW
-RED
-GREN</text>
+<text x="44.88285625" y="6.277853125" size="1" layer="1" font="vector" distance="150" rot="R90" align="bottom-right">1B
+1A
+2A
+2B</text>
 <text x="53.77285625" y="6.277853125" size="1" layer="1" font="vector" distance="150" rot="R90" align="bottom-right">12V</text>
 <text x="11.43" y="3.81" size="1.27" layer="1" font="vector">IAD Lab / Joël G.</text>
 <text x="5.08" y="11.43" size="1.27" layer="1" font="vector" rot="R90">NetStepper</text>
@@ -179,10 +179,10 @@ SIG2
 3V3</text>
 <text x="5.08" y="11.43" size="1.27" layer="29" font="vector" rot="R90">NetStepper</text>
 <text x="11.43" y="3.81" size="1.27" layer="29" font="vector">IAD Lab / Joël G.</text>
-<text x="44.88285625" y="6.277853125" size="1" layer="29" font="vector" distance="150" rot="R90" align="bottom-right">BLUE
-YLLW
-RED
-GREN</text>
+<text x="44.88285625" y="6.277853125" size="1" layer="29" font="vector" distance="150" rot="R90" align="bottom-right">1B
+1A
+2A
+2B</text>
 <text x="53.77285625" y="6.277853125" size="1" layer="29" font="vector" distance="150" rot="R90" align="bottom-right">12V</text>
 </plain>
 <libraries>
