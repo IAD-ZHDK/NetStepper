@@ -2597,100 +2597,6 @@ The Slot footprint only works if the mill layer is transmitted to the PCB fab ho
 </library>
 <library name="adafruit">
 <packages>
-<package name="TO92">
-<description>&lt;b&gt;TO-92&lt;/b&gt;</description>
-<wire x1="-2.095" y1="-1.651" x2="-0.7869" y2="2.5484" width="0.1524" layer="21" curve="-111.097684" cap="flat"/>
-<wire x1="0.7869" y1="2.5484" x2="2.095" y2="-1.651" width="0.1524" layer="21" curve="-111.097684" cap="flat"/>
-<wire x1="-2.095" y1="-1.651" x2="2.095" y2="-1.651" width="0.1524" layer="21"/>
-<wire x1="-2.254" y1="-0.254" x2="-0.286" y2="-0.254" width="0.1524" layer="51"/>
-<wire x1="-2.655" y1="-0.254" x2="-2.254" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="-0.286" y1="-0.254" x2="0.286" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="2.254" y1="-0.254" x2="2.655" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="0.286" y1="-0.254" x2="2.254" y2="-0.254" width="0.1524" layer="51"/>
-<wire x1="-0.7864" y1="2.5484" x2="0.7864" y2="2.5484" width="0.1524" layer="51" curve="-34.298964" cap="flat"/>
-<pad name="1" x="-1.27" y="0" drill="0.8128" diameter="1.6764" shape="octagon"/>
-<pad name="2" x="0" y="1.905" drill="0.8128" diameter="1.6764" shape="octagon"/>
-<pad name="3" x="1.27" y="0" drill="0.8128" diameter="1.6764" shape="octagon"/>
-<text x="2.413" y="1.651" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="2.921" y="-1.27" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-<package name="TO220H">
-<description>&lt;b&gt;TO-220&lt;/b&gt;</description>
-<wire x1="-5.207" y1="-7.62" x2="5.207" y2="-7.62" width="0.1524" layer="21"/>
-<wire x1="5.207" y1="8.255" x2="-5.207" y2="8.255" width="0.1524" layer="21"/>
-<wire x1="5.207" y1="-7.62" x2="5.207" y2="4.826" width="0.1524" layer="21"/>
-<wire x1="5.207" y1="4.826" x2="4.318" y2="4.826" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="4.826" x2="4.318" y2="6.35" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="6.35" x2="5.207" y2="6.35" width="0.1524" layer="21"/>
-<wire x1="5.207" y1="6.35" x2="5.207" y2="8.255" width="0.1524" layer="21"/>
-<wire x1="-5.207" y1="-7.62" x2="-5.207" y2="4.826" width="0.1524" layer="21"/>
-<wire x1="-5.207" y1="4.826" x2="-4.318" y2="4.826" width="0.1524" layer="21"/>
-<wire x1="-4.318" y1="4.826" x2="-4.318" y2="6.35" width="0.1524" layer="21"/>
-<wire x1="-4.318" y1="6.35" x2="-5.207" y2="6.35" width="0.1524" layer="21"/>
-<wire x1="-5.207" y1="6.35" x2="-5.207" y2="8.255" width="0.1524" layer="21"/>
-<wire x1="-4.572" y1="-6.985" x2="4.572" y2="-6.985" width="0.0508" layer="21"/>
-<wire x1="4.572" y1="1.27" x2="4.572" y2="-6.985" width="0.0508" layer="21"/>
-<wire x1="4.572" y1="1.27" x2="-4.572" y2="1.27" width="0.0508" layer="21"/>
-<wire x1="-4.572" y1="-6.985" x2="-4.572" y2="1.27" width="0.0508" layer="21"/>
-<circle x="0" y="4.826" radius="1.8034" width="0.1524" layer="21"/>
-<circle x="0" y="4.826" radius="2.54" width="0" layer="43"/>
-<circle x="0" y="4.826" radius="2.54" width="0" layer="42"/>
-<pad name="1" x="-2.54" y="-10.16" drill="1.1176" shape="long" rot="R90"/>
-<pad name="2" x="0" y="-10.16" drill="1.1176" shape="long" rot="R90"/>
-<pad name="3" x="2.54" y="-10.16" drill="1.1176" shape="long" rot="R90"/>
-<text x="-5.461" y="-10.922" size="1.778" layer="25" ratio="10" rot="R90">&gt;NAME</text>
-<text x="7.366" y="-11.049" size="1.778" layer="27" ratio="10" rot="R90">&gt;VALUE</text>
-<rectangle x1="2.159" y1="-11.049" x2="2.921" y2="-10.414" layer="21"/>
-<rectangle x1="-0.381" y1="-11.049" x2="0.381" y2="-10.414" layer="21"/>
-<rectangle x1="-2.921" y1="-11.049" x2="-2.159" y2="-10.414" layer="21"/>
-<rectangle x1="-3.175" y1="-10.414" x2="-1.905" y2="-7.62" layer="21"/>
-<rectangle x1="-0.635" y1="-10.414" x2="0.635" y2="-7.62" layer="21"/>
-<rectangle x1="1.905" y1="-10.414" x2="3.175" y2="-7.62" layer="21"/>
-<hole x="0" y="4.826" drill="3.302"/>
-</package>
-<package name="TO39">
-<description>&lt;b&gt;Metal Can Package&lt;/b&gt;</description>
-<wire x1="-4.0386" y1="-3.5306" x2="-3.5052" y2="-2.9972" width="0.1524" layer="21"/>
-<wire x1="-2.9718" y1="-3.5306" x2="-3.5052" y2="-4.064" width="0.1524" layer="21"/>
-<wire x1="-3.5052" y1="-4.064" x2="-4.0386" y2="-3.5306" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="4.572" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="3.8608" width="0.0508" layer="21"/>
-<pad name="1" x="0" y="-2.54" drill="0.8128" shape="octagon"/>
-<pad name="2" x="2.54" y="0" drill="0.8128" shape="octagon"/>
-<pad name="3" x="0" y="2.54" drill="0.8128" shape="octagon"/>
-<text x="-2.794" y="4.826" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.302" y="-0.635" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-<package name="TO252">
-<description>&lt;b&gt;SMALL OUTLINE TRANSISTOR&lt;/b&gt;&lt;p&gt;
-TS-003</description>
-<wire x1="3.2766" y1="3.8354" x2="3.277" y2="-2.159" width="0.2032" layer="21"/>
-<wire x1="3.277" y1="-2.159" x2="-3.277" y2="-2.159" width="0.2032" layer="21"/>
-<wire x1="-3.277" y1="-2.159" x2="-3.2766" y2="3.8354" width="0.2032" layer="21"/>
-<wire x1="-3.277" y1="3.835" x2="3.2774" y2="3.8346" width="0.2032" layer="51"/>
-<wire x1="-2.5654" y1="3.937" x2="-2.5654" y2="4.6482" width="0.2032" layer="51"/>
-<wire x1="-2.5654" y1="4.6482" x2="-2.1082" y2="5.1054" width="0.2032" layer="51"/>
-<wire x1="-2.1082" y1="5.1054" x2="2.1082" y2="5.1054" width="0.2032" layer="51"/>
-<wire x1="2.1082" y1="5.1054" x2="2.5654" y2="4.6482" width="0.2032" layer="51"/>
-<wire x1="2.5654" y1="4.6482" x2="2.5654" y2="3.937" width="0.2032" layer="51"/>
-<wire x1="2.5654" y1="3.937" x2="-2.5654" y2="3.937" width="0.2032" layer="51"/>
-<smd name="3" x="0" y="2.5" dx="5.4" dy="6.2" layer="1"/>
-<smd name="1" x="-2.28" y="-4.8" dx="1" dy="1.6" layer="1"/>
-<smd name="2" x="2.28" y="-4.8" dx="1" dy="1.6" layer="1"/>
-<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-2.7178" y1="-5.1562" x2="-1.8542" y2="-2.2606" layer="51"/>
-<rectangle x1="1.8542" y1="-5.1562" x2="2.7178" y2="-2.2606" layer="51"/>
-<rectangle x1="-0.4318" y1="-3.0226" x2="0.4318" y2="-2.2606" layer="21"/>
-<polygon width="0.1998" layer="51">
-<vertex x="-2.5654" y="3.937"/>
-<vertex x="-2.5654" y="4.6482"/>
-<vertex x="-2.1082" y="5.1054"/>
-<vertex x="2.1082" y="5.1054"/>
-<vertex x="2.5654" y="4.6482"/>
-<vertex x="2.5654" y="3.937"/>
-</polygon>
-</package>
 <package name="CT3216">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
 chip
@@ -6880,18 +6786,6 @@ diameter 5 mm, grid 2.54 mm</description>
 </package>
 </packages>
 <symbols>
-<symbol name="78XX">
-<wire x1="-7.62" y1="-5.08" x2="7.62" y2="-5.08" width="0.4064" layer="94"/>
-<wire x1="7.62" y1="-5.08" x2="7.62" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="7.62" y1="2.54" x2="-7.62" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="-7.62" y1="2.54" x2="-7.62" y2="-5.08" width="0.4064" layer="94"/>
-<text x="-7.62" y="5.715" size="1.778" layer="95">&gt;NAME</text>
-<text x="-7.62" y="3.175" size="1.778" layer="96">&gt;VALUE</text>
-<text x="-2.032" y="-4.318" size="1.524" layer="95">GND</text>
-<pin name="VI" x="-10.16" y="0" length="short" direction="in"/>
-<pin name="GND" x="0" y="-7.62" visible="pad" length="short" direction="pas" rot="R90"/>
-<pin name="VO" x="10.16" y="0" length="short" direction="pas" rot="R180"/>
-</symbol>
 <symbol name="CPOL-US">
 <wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="-1.016" x2="0" y2="-2.54" width="0.1524" layer="94"/>
@@ -6906,95 +6800,6 @@ diameter 5 mm, grid 2.54 mm</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="78*" prefix="IC">
-<description>Positive &lt;b&gt;VOLTAGE REGULATOR&lt;/b&gt;
-&lt;p&gt;
-Added bigger pads to the TO-92 package</description>
-<gates>
-<gate name="A1" symbol="78XX" x="0" y="0"/>
-</gates>
-<devices>
-<device name="Z" package="TO92">
-<connects>
-<connect gate="A1" pin="GND" pad="2"/>
-<connect gate="A1" pin="VI" pad="3"/>
-<connect gate="A1" pin="VO" pad="1"/>
-</connects>
-<technologies>
-<technology name="L05"/>
-<technology name="L08"/>
-<technology name="L12"/>
-<technology name="L15"/>
-<technology name="L18"/>
-<technology name="L24"/>
-</technologies>
-</device>
-<device name="T" package="TO220H">
-<connects>
-<connect gate="A1" pin="GND" pad="2"/>
-<connect gate="A1" pin="VI" pad="1"/>
-<connect gate="A1" pin="VO" pad="3"/>
-</connects>
-<technologies>
-<technology name="05"/>
-<technology name="06"/>
-<technology name="08"/>
-<technology name="12"/>
-<technology name="15"/>
-<technology name="18"/>
-<technology name="24"/>
-</technologies>
-</device>
-<device name="H" package="TO39">
-<connects>
-<connect gate="A1" pin="GND" pad="3"/>
-<connect gate="A1" pin="VI" pad="1"/>
-<connect gate="A1" pin="VO" pad="2"/>
-</connects>
-<technologies>
-<technology name="05"/>
-<technology name="06"/>
-<technology name="08"/>
-<technology name="12"/>
-<technology name="15"/>
-<technology name="18"/>
-<technology name="24"/>
-</technologies>
-</device>
-<device name="L" package="TO92">
-<connects>
-<connect gate="A1" pin="GND" pad="2"/>
-<connect gate="A1" pin="VI" pad="3"/>
-<connect gate="A1" pin="VO" pad="1"/>
-</connects>
-<technologies>
-<technology name="05"/>
-<technology name="06"/>
-<technology name="08"/>
-<technology name="12"/>
-<technology name="15"/>
-<technology name="18"/>
-<technology name="24"/>
-</technologies>
-</device>
-<device name="DT" package="TO252">
-<connects>
-<connect gate="A1" pin="GND" pad="3"/>
-<connect gate="A1" pin="VI" pad="1"/>
-<connect gate="A1" pin="VO" pad="2"/>
-</connects>
-<technologies>
-<technology name="05"/>
-<technology name="06"/>
-<technology name="08"/>
-<technology name="12"/>
-<technology name="15"/>
-<technology name="18"/>
-<technology name="24"/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="CPOL-US" prefix="C" uservalue="yes">
 <description>&lt;B&gt;POLARIZED CAPACITOR&lt;/B&gt;, American symbol</description>
 <gates>
@@ -9099,6 +8904,123 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="Traco-TSR1">
+<description>&lt;h2&gt;TRACO TSR-1 Series&lt;/h2&gt;
+
+&lt;p&gt;&lt;b&gt;Point-of-Load DC/DC-Converters
+
+&lt;p&gt;Vi max. 36 V;&amp;nbsp; Vo = (1.2 .. 15)V &amp;plusmn;2%;&amp;nbsp; Io = 0 .. 1 A&lt;/p&gt;
+
+&lt;p&gt;SIP-Package&lt;br /&gt;(drop-in replacement for 78xx linear voltage regulators in TO220-package, vertically assembled)&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;Source: www.tracopower.com&lt;/p&gt;
+
+&lt;hr&gt;
+
+
+&lt;author&gt;&lt;p&gt;&lt;i&gt;Author: Dipl.-Ing. FH Rainer Bayer&lt;br /&gt;
+HHN Hochschule Heilbronn, rainer.bayer@hs-heilbronn.de&lt;br /&gt;
+Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;&lt;/author&gt;</description>
+<packages>
+<package name="TSR-1">
+<description>&lt;p&gt;&lt;b&gt;Traco TSR-1&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Source: www.tracopower.com&lt;/i&gt;&lt;/p&gt;</description>
+<wire x1="-5.85" y1="-2" x2="-5.85" y2="5.6" width="0.2032" layer="21"/>
+<wire x1="-5.85" y1="5.6" x2="5.85" y2="5.6" width="0.2032" layer="21"/>
+<wire x1="5.85" y1="5.6" x2="5.85" y2="-2" width="0.2032" layer="21"/>
+<wire x1="5.85" y1="-2" x2="-5.85" y2="-2" width="0.2032" layer="21"/>
+<wire x1="-6.096" y1="5.842" x2="6.096" y2="5.842" width="0.1016" layer="39"/>
+<wire x1="6.096" y1="5.842" x2="6.096" y2="-2.2225" width="0.1016" layer="39"/>
+<wire x1="6.096" y1="-2.2225" x2="-6.096" y2="-2.2225" width="0.1016" layer="39"/>
+<wire x1="-6.096" y1="-2.2225" x2="-6.096" y2="5.842" width="0.1016" layer="39"/>
+<circle x="-5.08" y="-1.143" radius="0.4016" width="0" layer="21"/>
+<pad name="1" x="-2.54" y="0" drill="0.9" shape="square"/>
+<pad name="2" x="0" y="0" drill="0.9" shape="square"/>
+<pad name="3" x="2.54" y="0" drill="0.9" shape="square"/>
+<text x="-5.842" y="5.9182" size="1.4224" layer="25">&gt;NAME</text>
+<text x="-5.842" y="-3.683" size="1.4224" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.25" y1="-0.15" x2="0.25" y2="0.15" layer="51"/>
+<rectangle x1="-2.79" y1="-0.15" x2="-2.29" y2="0.15" layer="51"/>
+<rectangle x1="2.29" y1="-0.15" x2="2.79" y2="0.15" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TSR-1">
+<wire x1="-7.62" y1="-5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="7.62" y2="2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="2.54" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<text x="-7.62" y="5.461" size="1.6764" layer="95">&gt;NAME</text>
+<text x="-7.62" y="3.175" size="1.6764" layer="96">&gt;VALUE</text>
+<text x="-2.032" y="-4.318" size="1.524" layer="95">GND</text>
+<pin name="VI" x="-10.16" y="0" length="short" direction="sup"/>
+<pin name="GND" x="0" y="-7.62" visible="pad" length="short" direction="pwr" rot="R90"/>
+<pin name="VO" x="10.16" y="0" length="short" direction="pwr" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TSR_1-*" prefix="U">
+<description>&lt;h2&gt;TRACO TSR-1 Series&lt;/h2&gt;
+
+&lt;p&gt;&lt;b&gt;Point-of-Load DC/DC-Converters
+
+&lt;p&gt;Vi max. 36 V;&amp;nbsp; Vo = (1.2 .. 15)V &amp;plusmn;2%;&amp;nbsp; Io = 0 .. 1 A&lt;/p&gt;
+
+&lt;p&gt;SIP-Package&lt;br /&gt;(drop-in replacement for 78xx linear voltage regulators in TO220-package, vertically assembled)&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;Source: www.tracopower.com&lt;/p&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;Technologies:&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;TSR 1-   Vi (V)       Vo (V) &amp;plusmn;2%   Io = 0 .. 1 A
+&lt;s&gt;      &lt;/s&gt;   &lt;s&gt;          &lt;/s&gt;   &lt;s&gt;          &lt;/s&gt;
+24_      (       generic       )
+2412      4.6 .. 36    1.2
+2415      4.6 .. 36    1.5
+2418      4.6 .. 36    1.8
+2425      4.6 .. 36    2.5
+2433      4.75.. 36    3.3
+2450      6.5 .. 36    5.0
+2465      9.0 .. 36    6.5
+2490     12   .. 36    9.0
+24120    15   .. 36   12
+24150    18   .. 36   15
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;author&gt;&lt;p&gt;&lt;i&gt;Author: Dipl.-Ing. FH Rainer Bayer&lt;br /&gt;
+HHN Hochschule Heilbronn, rainer.bayer@hs-heilbronn.de&lt;br /&gt;
+Ingenieurbüro ing-rb, mail@ing-rb.de&lt;/p&gt;&lt;/author&gt;</description>
+<gates>
+<gate name="G$1" symbol="TSR-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TSR-1">
+<connects>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="VI" pad="1"/>
+<connect gate="G$1" pin="VO" pad="3"/>
+</connects>
+<technologies>
+<technology name="2412"/>
+<technology name="24120"/>
+<technology name="2415"/>
+<technology name="24150"/>
+<technology name="2418"/>
+<technology name="2425"/>
+<technology name="2433"/>
+<technology name="2450"/>
+<technology name="2465"/>
+<technology name="2490"/>
+<technology name="24_"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="CNAME" value="NetStepper"/>
@@ -9114,7 +9036,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <parts>
 <part name="STC1" library="Library" deviceset="POLOLU-MD09B" device=""/>
 <part name="ST1" library="SparkFun-Connectors" deviceset="CONN_04" device="LONGPADS"/>
-<part name="VR1" library="adafruit" deviceset="78*" device="T" technology="05"/>
+<part name="VR1" library="Traco-TSR1" deviceset="TSR_1-*" device="" technology="2450"/>
 <part name="C1" library="adafruit" deviceset="CPOL-US" device="E2-5" value="10uF"/>
 <part name="C2" library="adafruit" deviceset="CPOL-US" device="E2-5" value="10uF"/>
 <part name="C3" library="adafruit" deviceset="CPOL-US" device="E2-5" value="100uF"/>
@@ -9133,7 +9055,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instances>
 <instance part="STC1" gate="G$1" x="48.26" y="12.7"/>
 <instance part="ST1" gate="G$1" x="160.02" y="63.5"/>
-<instance part="VR1" gate="A1" x="160.02" y="17.78"/>
+<instance part="VR1" gate="G$1" x="160.02" y="17.78"/>
 <instance part="C1" gate="G$1" x="144.78" y="7.62"/>
 <instance part="C2" gate="G$1" x="175.26" y="7.62"/>
 <instance part="C3" gate="G$1" x="167.64" y="91.44" rot="R90"/>
@@ -9160,7 +9082,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="68.58" y="20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="VR1" gate="A1" pin="GND"/>
+<pinref part="VR1" gate="G$1" pin="GND"/>
 <wire x1="160.02" y1="10.16" x2="160.02" y2="0" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="-"/>
 <wire x1="160.02" y1="0" x2="160.02" y2="-7.62" width="0.1524" layer="91"/>
@@ -9248,7 +9170,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="68.58" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="VR1" gate="A1" pin="VI"/>
+<pinref part="VR1" gate="G$1" pin="VI"/>
 <wire x1="149.86" y1="17.78" x2="144.78" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="+"/>
 <wire x1="144.78" y1="17.78" x2="129.54" y2="17.78" width="0.1524" layer="91"/>
@@ -9389,7 +9311,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="5V" class="0">
 <segment>
-<pinref part="VR1" gate="A1" pin="VO"/>
+<pinref part="VR1" gate="G$1" pin="VO"/>
 <wire x1="170.18" y1="17.78" x2="175.26" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="+"/>
 <wire x1="175.26" y1="17.78" x2="187.96" y2="17.78" width="0.1524" layer="91"/>
