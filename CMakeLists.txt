@@ -23,4 +23,4 @@ set(SOURCE_FILES
 add_library(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 
 # include naos include paths
-add_subdirectory(.naos)
+add_subdirectory(naos)
