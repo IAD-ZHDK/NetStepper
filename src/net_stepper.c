@@ -25,7 +25,7 @@ static struct {
   uint32_t last_loop;
 } net_stepper_state = {.powered = false,
                        .resolution = 1,
-                       .frequency = 0,
+                       .frequency = 1,
                        .mode = NET_STEPPER_IDLE,
                        .threshold = 0,
                        .target = 0.0,
