@@ -3,6 +3,7 @@
 #include "net_stepper.h"
 
 naos_config_t config = {.device_type = "NetStepper",
+                        .firmware_version = "0.1.0",
                         .online_callback = net_stepper_setup,
                         .message_callback = net_stepper_handle,
                         .loop_callback = net_stepper_loop,
