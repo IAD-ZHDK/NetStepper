@@ -127,13 +127,13 @@ int stepper_driver_get_frequency() { return stepper_driver_data.frequency; }
 
 void stepper_driver_set_frequency(int freq) {
   // check upper bound
-  if (freq > 900) {
-    freq = 900;
+  if (freq > 10000) {
+    freq = 10000;
   }
 
   // check lower bound
-  if (freq < 1) {
-    freq = 1;
+  if (freq < 100) {
+    freq = 100;
   }
 
   // save frequency
