@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2017 Interaction Design, Joël Gähwiler
+Copyright (c) 2017 Joël Gähwiler
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
