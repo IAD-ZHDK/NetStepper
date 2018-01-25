@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include <naos.h>
+#include <art32/strconv.h>
 
 #include "led.h"
 #include "sensors.h"
@@ -80,21 +81,21 @@ void net_stepper_handle(const char* topic, uint8_t* payload, size_t len, naos_sc
 
   // handle "resolution" command
   if (strcmp(topic, "resolution") == 0) {
-    net_stepper_state.resolution = atoi(str);
+    net_stepper_state.resolution = a32_str2i(str);
 
     return;
   }
 
   // handle "frequency" command
   if (strcmp(topic, "frequency") == 0) {
-    net_stepper_state.frequency = (int)atol(str);
+    net_stepper_state.frequency = a32_str2i(str);
 
     return;
   }
 
   // handle "threshold" command
   if (strcmp(topic, "threshold") == 0) {
-    net_stepper_state.threshold = atoi(str);
+    net_stepper_state.threshold = a32_str2i(str);
 
     return;
   }
@@ -114,7 +115,7 @@ void net_stepper_handle(const char* topic, uint8_t* payload, size_t len, naos_sc
 
   // handle "move" command
   if (strcmp(topic, "move") == 0) {
-    net_stepper_state.target = atof(str);
+    net_stepper_state.target = a32_str2d(str);
     net_stepper_state.verbose = true;
     net_stepper_state.mode = NET_STEPPER_ABSOLUTE;
 
@@ -123,7 +124,7 @@ void net_stepper_handle(const char* topic, uint8_t* payload, size_t len, naos_sc
 
   // handle "move-quiet" command
   if (strcmp(topic, "move-quiet") == 0) {
-    net_stepper_state.target = atof(str);
+    net_stepper_state.target = a32_str2d(str);
     net_stepper_state.verbose = false;
     net_stepper_state.mode = NET_STEPPER_ABSOLUTE;
 

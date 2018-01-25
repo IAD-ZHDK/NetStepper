@@ -5,6 +5,8 @@
 
 #define SENSORS_HISTOGRAM_SIZE 10
 
+// TODO: Use art32 smooth.
+
 typedef struct {
   int values[SENSORS_HISTOGRAM_SIZE];
   uint8_t index;
