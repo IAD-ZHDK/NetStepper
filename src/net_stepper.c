@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include <naos.h>
-#include <naos/utils.h>
 
 #include "led.h"
 #include "sensors.h"
@@ -63,13 +62,15 @@ void net_stepper_setup() {
   net_stepper_state.mode = NET_STEPPER_IDLE;
 }
 
-void net_stepper_handle(const char* topic, const char* payload, unsigned int len, naos_scope_t scope) {
+void net_stepper_handle(const char* topic, uint8_t* payload, unsigned int len, naos_scope_t scope) {
+  char* str = (char*)payload;
+
   // handle "power" command
   if (strcmp(topic, "power") == 0) {
-    if (strcmp(payload, "on") == 0) {
+    if (strcmp(str, "on") == 0) {
       net_stepper_state.powered = true;
       net_stepper_state.mode = NET_STEPPER_IDLE;
-    } else if (strcmp(payload, "off") == 0) {
+    } else if (strcmp(str, "off") == 0) {
       net_stepper_state.powered = false;
       net_stepper_state.mode = NET_STEPPER_IDLE;
     }
@@ -79,31 +80,31 @@ void net_stepper_handle(const char* topic, const char* payload, unsigned int len
 
   // handle "resolution" command
   if (strcmp(topic, "resolution") == 0) {
-    net_stepper_state.resolution = atoi(payload);
+    net_stepper_state.resolution = atoi(str);
 
     return;
   }
 
   // handle "frequency" command
   if (strcmp(topic, "frequency") == 0) {
-    net_stepper_state.frequency = (int)atol(payload);
+    net_stepper_state.frequency = (int)atol(str);
 
     return;
   }
 
   // handle "threshold" command
   if (strcmp(topic, "threshold") == 0) {
-    net_stepper_state.threshold = atoi(payload);
+    net_stepper_state.threshold = atoi(str);
 
     return;
   }
 
   // handle "drive" command
   if (strcmp(topic, "drive") == 0) {
-    if (strcmp(payload, "cw") == 0) {
+    if (strcmp(str, "cw") == 0) {
       net_stepper_state.direction_cw = true;
       net_stepper_state.mode = NET_STEPPER_CONTINUOUS;
-    } else if (strcmp(payload, "ccw") == 0) {
+    } else if (strcmp(str, "ccw") == 0) {
       net_stepper_state.direction_cw = false;
       net_stepper_state.mode = NET_STEPPER_CONTINUOUS;
     }
@@ -113,7 +114,7 @@ void net_stepper_handle(const char* topic, const char* payload, unsigned int len
 
   // handle "move" command
   if (strcmp(topic, "move") == 0) {
-    net_stepper_state.target = atof(payload);
+    net_stepper_state.target = atof(str);
     net_stepper_state.verbose = true;
     net_stepper_state.mode = NET_STEPPER_ABSOLUTE;
 
@@ -122,7 +123,7 @@ void net_stepper_handle(const char* topic, const char* payload, unsigned int len
 
   // handle "move-quiet" command
   if (strcmp(topic, "move-quiet") == 0) {
-    net_stepper_state.target = atof(payload);
+    net_stepper_state.target = atof(str);
     net_stepper_state.verbose = false;
     net_stepper_state.mode = NET_STEPPER_ABSOLUTE;
 
@@ -175,7 +176,7 @@ void net_stepper_loop() {
     // publish last read sensor value
     char sensor_string[10];
     snprintf(sensor_string, 10, "%d", sensor);
-    naos_publish_str("sensor", sensor_string, 0, false, NAOS_LOCAL);
+    naos_publish("sensor", sensor_string, 0, false, NAOS_LOCAL);
 
     // reset flag
     net_stepper_state.send_sensor = false;
@@ -193,7 +194,7 @@ void net_stepper_loop() {
     net_stepper_state.threshold = 0;
 
     // publish reached event
-    naos_publish_str("reached", "0.000", 0, false, NAOS_LOCAL);
+    naos_publish("reached", "0.000", 0, false, NAOS_LOCAL);
   }
 
   // get current time
@@ -232,7 +233,7 @@ void net_stepper_loop() {
       if (net_stepper_state.verbose) {
         char position_str[10];
         snprintf(position_str, 10, "%.3f", net_stepper_state.position);
-        naos_publish_str("reached", position_str, 0, false, NAOS_LOCAL);
+        naos_publish("reached", position_str, 0, false, NAOS_LOCAL);
       }
     } else {
       // otherwise adjust direction

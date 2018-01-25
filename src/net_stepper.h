@@ -5,7 +5,7 @@ void net_stepper_init();
 
 void net_stepper_setup();
 
-void net_stepper_handle(const char* topic, const char* payload, unsigned int len, naos_scope_t scope);
+void net_stepper_handle(const char* topic, uint8_t* payload, unsigned int len, naos_scope_t scope);
 
 void net_stepper_notify(naos_status_t status);
 
