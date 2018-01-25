@@ -62,7 +62,7 @@ void net_stepper_setup() {
   net_stepper_state.mode = NET_STEPPER_IDLE;
 }
 
-void net_stepper_handle(const char* topic, uint8_t* payload, unsigned int len, naos_scope_t scope) {
+void net_stepper_handle(const char* topic, uint8_t* payload, size_t len, naos_scope_t scope) {
   char* str = (char*)payload;
 
   // handle "power" command
